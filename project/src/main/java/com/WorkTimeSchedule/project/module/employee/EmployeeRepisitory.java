@@ -11,6 +11,8 @@ public interface EmployeeRepisitory extends JpaRepository<EmployeeEntity, Long>,
 
     EmployeeEntity getOneByGuid(String guid);
 
+    List<EmployeeEntity> findAll();
+
     List<EmployeeEntity> findAllByStanowisko(Position stanowisko);
 
 }
