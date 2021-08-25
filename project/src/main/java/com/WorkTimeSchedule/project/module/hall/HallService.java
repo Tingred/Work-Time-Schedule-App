@@ -26,4 +26,7 @@ public class HallService {
     public void delete(HallEntity toDelete) {
         hallRepository.delete(toDelete);
     }
+    public HallEntity update(HallEntity hallEntity){
+        return hallRepository.saveAndFlush(hallEntity);
+    }
 }

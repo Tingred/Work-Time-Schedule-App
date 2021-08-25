@@ -10,6 +10,5 @@ import java.util.List;
 public interface HallRepository extends JpaRepository<HallEntity, Integer>, JpaSpecificationExecutor<HallEntity> {
 
     HallEntity findOneById(Integer id);
-
     List<HallEntity> findAll();
 }

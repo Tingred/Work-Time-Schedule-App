@@ -1,4 +1,4 @@
-package com.WorkTimeSchedule.project.module.employee;
+package com.WorkTimeSchedule.project.module.employee.entity;
 
 public enum PositionEnum {
     PRACOWNIK_LINII("Pracownik linii"),
