@@ -10,8 +10,8 @@ public class EmployeeMapper {
                 .setGuid(entity.getGuid())
                 .setImie(entity.getImie())
                 .setNazwisko(entity.getNazwisko())
-                .setPlec(entity.getPlec())
-                .setStanowisko(entity.getStanowisko());
+                .setPlec(entity.getPlec().toString())
+                .setStanowisko(entity.getStanowisko().toString());
     }
 
     public static List<EmployeeDto> map(List<EmployeeEntity> entities){
@@ -19,5 +19,4 @@ public class EmployeeMapper {
                 .map(EmployeeMapper::map)
                 .collect(Collectors.toList());
     }
-
 }

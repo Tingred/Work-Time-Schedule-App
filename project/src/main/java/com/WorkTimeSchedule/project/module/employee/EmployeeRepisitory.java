@@ -13,6 +13,6 @@ public interface EmployeeRepisitory extends JpaRepository<EmployeeEntity, Long>,
 
     List<EmployeeEntity> findAll();
 
-    List<EmployeeEntity> findAllByStanowisko(Position stanowisko);
+    List<EmployeeEntity> findAllByStanowisko(PositionEnum stanowisko);
 
 }

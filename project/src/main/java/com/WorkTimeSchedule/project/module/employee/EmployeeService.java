@@ -19,7 +19,10 @@ public class EmployeeService {
         return employeeRepisitory.findAll();
     };
 
-    public List<EmployeeEntity> findAllByStanowisko(Position stanowisko){
-        return employeeRepisitory.findAllByStanowisko(stanowisko);
-    };
+    public List<EmployeeEntity> findAll(PositionEnum stanowisko) {
+        if(stanowisko!=null){
+            return employeeRepisitory.findAllByStanowisko(stanowisko);
+        }
+        return employeeRepisitory.findAll();
+    }
 }
