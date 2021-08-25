@@ -8,4 +8,5 @@ public enum Position {
     MAGAZYNIER,
     MENADZER,
     DYREKTOR,
+
 }
