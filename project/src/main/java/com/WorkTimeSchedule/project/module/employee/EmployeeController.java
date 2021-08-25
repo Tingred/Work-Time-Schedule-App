@@ -15,17 +15,17 @@ public class EmployeeController {
     private EmployeeService employeeService;
 
     @GetMapping(value = "/api/employee/{guid}")
-    public EmployeeDto getOneEmployee(@PathVariable String guid){
+    public EmployeeDto getEmployeeByGuid(@PathVariable String guid){
         return EmployeeMapper.map(employeeService.getOneByGuid(guid));
     }
 
-    @GetMapping("/api/employees")
-    public List<EmployeeDto> getAllEmployees(){
+    @GetMapping(value = "/api/employees")
+    public List<EmployeeDto> getEmployees(){
         return EmployeeMapper.map(employeeService.findAll());
     }
 
     @GetMapping(value = "/api/employee")
-    public List<EmployeeDto> getAllEmployeesByStanowisko(
+    public List<EmployeeDto> getEmployeesByStanowisko(
             @RequestParam(required = false) String stanowisko){
         PositionEnum value = PositionEnum.fromString(stanowisko);
         return EmployeeMapper.map(employeeService.findAll(value));
