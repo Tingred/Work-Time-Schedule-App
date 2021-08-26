@@ -18,3 +18,16 @@ VALUES ('fa4993b3-2817-4905-915f-b039594816f7','Agnieszka','Denna','57385967364'
 
 INSERT INTO employee (guid,imie,nazwisko,pesel,placa,plec,stanowisko) 
 VALUES ('2ea6f5af-377b-44ba-b5a9-d77d3f2e43b2','Dominika','Izdebska','36284967461',3000,'KOBIETA','MAGAZYNIER');
+
+
+INSERT INTO hall(`name`)
+VALUES ('Hala A');
+
+INSERT INTO hall(`name`)
+VALUES ('Hala B');
+
+INSERT INTO hall(`name`)
+VALUES ('Hala C');
+
+INSERT INTO hall(`name`)
+VALUES ('Hala C2');

@@ -1,5 +1,7 @@
 package com.WorkTimeSchedule.project.module.employee;
 
+import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
+import com.WorkTimeSchedule.project.module.employee.entity.PositionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
