@@ -13,8 +13,8 @@ public class EmployeeService {
     @Autowired
     private  EmployeeRepisitory employeeRepisitory;
 
-    public EmployeeEntity getOneByGuid(String guid) {
-        return employeeRepisitory.getOneByGuid(guid);
+    public EmployeeEntity getOneByUuid(String uuid) {
+        return employeeRepisitory.getOneByUuid(uuid);
     };
 
     public List<EmployeeEntity> findAll(){

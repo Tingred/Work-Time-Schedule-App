@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface EmployeeRepisitory extends JpaRepository<EmployeeEntity, Long>, JpaSpecificationExecutor<EmployeeEntity> {
 
-    EmployeeEntity getOneByGuid(String guid);
+    EmployeeEntity getOneByUuid(String uuid);
 
     List<EmployeeEntity> findAll();
 

@@ -15,9 +15,9 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping(value = "/api/employee/{guid}")
-    public EmployeeDto getEmployeeByGuid(@PathVariable String guid){
-        return EmployeeMapper.map(employeeService.getOneByGuid(guid));
+    @GetMapping(value = "/api/employee/{uuid}")
+    public EmployeeDto getEmployeeByGuid(@PathVariable String uuid){
+        return EmployeeMapper.map(employeeService.getOneByUuid(uuid));
     }
 
     @GetMapping(value = "/api/employees")

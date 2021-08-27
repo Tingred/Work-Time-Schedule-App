@@ -9,7 +9,7 @@ public class EmployeeMapper {
 
     public static EmployeeDto map(EmployeeEntity entity){
         return new EmployeeDto()
-                .setGuid(entity.getGuid())
+                .setGuid(entity.getUuid())
                 .setImie(entity.getImie())
                 .setNazwisko(entity.getNazwisko())
                 .setPlec(entity.getPlec().toString())

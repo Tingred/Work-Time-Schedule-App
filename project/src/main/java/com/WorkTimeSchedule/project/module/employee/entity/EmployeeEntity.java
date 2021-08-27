@@ -1,5 +1,6 @@
 package com.WorkTimeSchedule.project.module.employee.entity;
 
+import com.WorkTimeSchedule.project.module.workplace.WorkplaceEntity;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -10,7 +11,10 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.UUID;
 
 @Entity
 @Table(name = "employee")
@@ -23,7 +27,7 @@ public class EmployeeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String guid;
+    private String uuid = UUID.randomUUID().toString();
     private String imie;
     private String nazwisko;
     private Long pesel;
@@ -34,4 +38,8 @@ public class EmployeeEntity {
 
     @Enumerated(EnumType.STRING)
     private PositionEnum stanowisko;
+
+    @ManyToOne
+    @JoinColumn(name = "workplace_id",referencedColumnName = "id")
+    private WorkplaceEntity miejscePracy;
 }

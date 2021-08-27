@@ -8,7 +8,7 @@ public class HallMapper {
     public static HallDto map(HallEntity entity){
         return new HallDto()
                 .setId(entity.getId())
-                .setName(entity.getName());
+                .setNazwa(entity.getNazwa());
     }
 
     public static List<HallDto> map(List<HallEntity> entities){

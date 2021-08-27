@@ -10,5 +10,5 @@ import lombok.experimental.Accessors;
 public class HallDto {
 
     private Integer id;
-    private String name;
+    private String nazwa;
 }
