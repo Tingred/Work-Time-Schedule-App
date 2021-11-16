@@ -9,6 +9,6 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true)
 public class HallDto {
 
-    private Integer id;
+    private String uuid;
     private String name;
 }

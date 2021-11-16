@@ -1,5 +1,6 @@
-package com.WorkTimeSchedule.project.module.employee;
+package com.WorkTimeSchedule.project.module.workplace;
 
+import com.WorkTimeSchedule.project.module.hall.HallDto;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
@@ -7,11 +8,8 @@ import lombok.experimental.Accessors;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class EmployeeDto {
+public class WorkplaceDto {
 
     private String uuid;
     private String name;
-    private String surname;
-    private String gender;
-    private String position;
 }

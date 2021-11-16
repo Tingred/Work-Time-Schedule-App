@@ -15,17 +15,19 @@ public class HallService {
         return hallRepository.findAll();
     }
 
-    public void save(HallEntity entity) {
-    hallRepository.save(entity);
+    public void save(HallForm hall) {
+        hallRepository.saveAndFlush(new HallEntity(hall.getName()));
     }
 
-    public HallEntity findOne(Integer id) {
-        return hallRepository.findOneById(id);
+    public HallEntity findOneByUuid(String uuid) {
+        return hallRepository.findOneByUuid(uuid);
     }
 
     public void delete(HallEntity toDelete) {
         hallRepository.delete(toDelete);
+
     }
+
     public HallEntity update(HallEntity hallEntity){
         return hallRepository.saveAndFlush(hallEntity);
     }

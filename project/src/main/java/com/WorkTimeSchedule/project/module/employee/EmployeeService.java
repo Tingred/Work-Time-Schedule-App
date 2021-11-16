@@ -13,17 +13,17 @@ public class EmployeeService {
     @Autowired
     private  EmployeeRepisitory employeeRepisitory;
 
-    public EmployeeEntity getOneByGuid(String guid) {
-        return employeeRepisitory.getOneByGuid(guid);
+    public EmployeeEntity getOneByUuid(String uuid) {
+        return employeeRepisitory.getOneByUuid(uuid);
     };
 
     public List<EmployeeEntity> findAll(){
         return employeeRepisitory.findAll();
     };
 
-    public List<EmployeeEntity> findAll(PositionEnum stanowisko) {
-        if(stanowisko!=null){
-            return employeeRepisitory.findAllByStanowisko(stanowisko);
+    public List<EmployeeEntity> findAll(PositionEnum position) {
+        if(position!=null){
+            return employeeRepisitory.findAllByStanowisko(position);
         }
         return employeeRepisitory.findAll();
     }

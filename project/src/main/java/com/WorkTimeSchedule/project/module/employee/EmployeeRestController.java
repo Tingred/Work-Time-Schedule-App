@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class EmployeeController {
+public class EmployeeRestController {
 
     @Autowired
     private EmployeeService employeeService;
 
-    @GetMapping(value = "/api/employee/{guid}")
-    public EmployeeDto getEmployeeByGuid(@PathVariable String guid){
-        return EmployeeMapper.map(employeeService.getOneByGuid(guid));
+    @GetMapping(value = "/api/employee/{uuid}")
+    public EmployeeDto getEmployeeByGuid(@PathVariable String uuid){
+        return EmployeeMapper.map(employeeService.getOneByUuid(uuid));
     }
 
     @GetMapping(value = "/api/employees")
@@ -26,9 +26,9 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/api/employee")
-    public List<EmployeeDto> getEmployeesByStanowisko(
-            @RequestParam(required = false) String stanowisko){
-        PositionEnum value = PositionEnum.fromString(stanowisko);
+    public List<EmployeeDto> getEmployeesByPosition(
+            @RequestParam(required = false) String position){
+        PositionEnum value = PositionEnum.fromString(position);
         return EmployeeMapper.map(employeeService.findAll(value));
     }
 }

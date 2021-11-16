@@ -9,6 +9,7 @@ import java.util.List;
 @Repository
 public interface HallRepository extends JpaRepository<HallEntity, Integer>, JpaSpecificationExecutor<HallEntity> {
 
-    HallEntity findOneById(Integer id);
+    HallEntity findOneByUuid(String uuid);
+    HallEntity findOneByName(String name);
     List<HallEntity> findAll();
 }

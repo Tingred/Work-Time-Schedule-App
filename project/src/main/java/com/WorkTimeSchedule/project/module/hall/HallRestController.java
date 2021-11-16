@@ -1,46 +1,44 @@
 package com.WorkTimeSchedule.project.module.hall;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-public class HallController {
+public class HallRestController {
 
     @Autowired
     private HallService hallService;
 
-    @GetMapping(value = "/api/halls")
+    @GetMapping(value = "/api/hall/all")
     public List<HallDto> getList() {
         return HallMapper.map(hallService.findAll());
     }
 
-    @PostMapping(value = "/api/hall")
+    @PostMapping(value = "/api/hall/new")
     public void newHall(
-            @RequestBody HallEntity entity) {
-        hallService.save(entity);
+            @RequestBody HallForm newHall) {
+        hallService.save(newHall);
     }
-    @DeleteMapping(value = "/api/hall/{id}")
+    @DeleteMapping(value = "/api/hall/delete/{uuid}")
     public void deleteHall(
-            @PathVariable Integer id){
-        HallEntity toDelete = hallService.findOne(id);
+            @PathVariable String uuid){
+        HallEntity toDelete = hallService.findOneByUuid(uuid);
         hallService.delete(toDelete);
     }
-    @PutMapping(value = "/api/hall/{id}")
+    @PutMapping(value = "/api/hall/update/{uuid}")
     public HallDto updateHall(
-            @PathVariable Integer id,
-            @RequestBody HallEntity entity){
-        HallEntity toUpdate = hallService.findOne(id);
-        hallService.update(toUpdate.setName(entity.getName()));
+            @PathVariable String uuid,
+            @RequestBody HallForm form){
+        HallEntity toUpdate = hallService.findOneByUuid(uuid);
+        hallService.update(toUpdate.setName(form.getName()));
         return HallMapper.map(toUpdate);
     }
 }
