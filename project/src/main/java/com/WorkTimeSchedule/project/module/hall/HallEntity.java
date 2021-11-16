@@ -2,32 +2,40 @@ package com.WorkTimeSchedule.project.module.hall;
 
 import com.WorkTimeSchedule.project.module.workplace.WorkplaceEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.Set;
+import java.util.UUID;
 
 @Entity
 @Table(name = "hall")
 @Getter
 @Setter
 @Accessors(chain = true)
+@NoArgsConstructor
 public class HallEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private String id;
 
-    private String nazwa;
+    private String uuid;
+    private String name;
 
-    @OneToMany(mappedBy = "hala",cascade = CascadeType.ALL)
-    private Set<WorkplaceEntity> miejscePracy;
+    @OneToMany(mappedBy = "hall",cascade = CascadeType.ALL)
+    private Set<WorkplaceEntity> workplace;
+
+    public HallEntity(String name) {
+        this.uuid = UUID.randomUUID().toString();
+        this.name = name;
+    }
 }

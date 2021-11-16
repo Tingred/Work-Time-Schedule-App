@@ -12,33 +12,33 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class HallController {
+public class HallRestController {
 
     @Autowired
     private HallService hallService;
 
-    @GetMapping(value = "/api/halls")
+    @GetMapping(value = "/api/hall/all")
     public List<HallDto> getList() {
         return HallMapper.map(hallService.findAll());
     }
 
-    @PostMapping(value = "/api/hall")
+    @PostMapping(value = "/api/hall/new")
     public void newHall(
-            @RequestBody HallEntity entity) {
-        hallService.save(entity);
+            @RequestBody HallForm newHall) {
+        hallService.save(newHall);
     }
-    @DeleteMapping(value = "/api/hall/{id}")
+    @DeleteMapping(value = "/api/hall/delete/{uuid}")
     public void deleteHall(
-            @PathVariable Integer id){
-        HallEntity toDelete = hallService.findOne(id);
+            @PathVariable String uuid){
+        HallEntity toDelete = hallService.findOneByUuid(uuid);
         hallService.delete(toDelete);
     }
-    @PutMapping(value = "/api/hall/{id}")
+    @PutMapping(value = "/api/hall/update/{uuid}")
     public HallDto updateHall(
-            @PathVariable Integer id,
-            @RequestBody HallEntity entity){
-        HallEntity toUpdate = hallService.findOne(id);
-        hallService.update(toUpdate.setNazwa(entity.getNazwa()));
+            @PathVariable String uuid,
+            @RequestBody HallForm form){
+        HallEntity toUpdate = hallService.findOneByUuid(uuid);
+        hallService.update(toUpdate.setName(form.getName()));
         return HallMapper.map(toUpdate);
     }
 }

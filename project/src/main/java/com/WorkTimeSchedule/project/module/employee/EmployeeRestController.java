@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-public class EmployeeController {
+public class EmployeeRestController {
 
     @Autowired
     private EmployeeService employeeService;
@@ -26,9 +26,9 @@ public class EmployeeController {
     }
 
     @GetMapping(value = "/api/employee")
-    public List<EmployeeDto> getEmployeesByStanowisko(
-            @RequestParam(required = false) String stanowisko){
-        PositionEnum value = PositionEnum.fromString(stanowisko);
+    public List<EmployeeDto> getEmployeesByPosition(
+            @RequestParam(required = false) String position){
+        PositionEnum value = PositionEnum.fromString(position);
         return EmployeeMapper.map(employeeService.findAll(value));
     }
 }

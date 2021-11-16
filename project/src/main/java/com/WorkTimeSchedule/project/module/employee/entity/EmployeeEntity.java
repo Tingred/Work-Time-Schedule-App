@@ -28,18 +28,18 @@ public class EmployeeEntity {
     private Long id;
 
     private String uuid = UUID.randomUUID().toString();
-    private String imie;
-    private String nazwisko;
+    private String name;
+    private String surname;
     private Long pesel;
-    private Long placa;
+    private Long salary;
 
     @Enumerated(EnumType.STRING)
-    private GenderEnum plec;
+    private GenderEnum gender;
 
     @Enumerated(EnumType.STRING)
-    private PositionEnum stanowisko;
+    private PositionEnum position;
 
     @ManyToOne
     @JoinColumn(name = "workplace_id",referencedColumnName = "id")
-    private WorkplaceEntity miejscePracy;
+    private WorkplaceEntity workplace;
 }

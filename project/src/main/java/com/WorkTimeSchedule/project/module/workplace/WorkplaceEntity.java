@@ -3,6 +3,7 @@ package com.WorkTimeSchedule.project.module.workplace;
 import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
 import com.WorkTimeSchedule.project.module.hall.HallEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -16,6 +17,11 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.LinkedHashSet;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Set;
 import java.util.UUID;
 
@@ -24,19 +30,27 @@ import java.util.UUID;
 @Getter
 @Setter
 @Accessors(chain = true)
+@NoArgsConstructor
 public class WorkplaceEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String uuid = UUID.randomUUID().toString();
-    private String nazwa;
+    private String uuid;
+    private String name;
 
-    @OneToMany(mappedBy = "miejscePracy",cascade = CascadeType.ALL)
-    private Set<EmployeeEntity> pracownicy;
+    @OneToMany(mappedBy = "workplace",cascade = CascadeType.ALL)
+    private List<EmployeeEntity> employees;
 
     @ManyToOne
     @JoinColumn(name = "hall_id",referencedColumnName = "id")
-    private HallEntity hala;
+    private HallEntity hall;
+
+    public WorkplaceEntity(String name, HallEntity hall) {
+        this.uuid = UUID.randomUUID().toString();
+        this.name = name;
+        this.hall = hall;
+        this.employees = new LinkedList<>();
+    }
 }

@@ -1,0 +1,11 @@
+package com.WorkTimeSchedule.project.module.workplace;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface WorkplaceRepository extends JpaRepository<WorkplaceEntity, Integer>, JpaSpecificationExecutor<WorkplaceEntity> {
+
+    WorkplaceEntity findOneByUuid(String uuid);
+}

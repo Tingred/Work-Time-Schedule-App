@@ -9,11 +9,11 @@ public class EmployeeMapper {
 
     public static EmployeeDto map(EmployeeEntity entity){
         return new EmployeeDto()
-                .setGuid(entity.getUuid())
-                .setImie(entity.getImie())
-                .setNazwisko(entity.getNazwisko())
-                .setPlec(entity.getPlec().toString())
-                .setStanowisko(entity.getStanowisko().toString());
+                .setUuid(entity.getUuid())
+                .setName(entity.getName())
+                .setSurname(entity.getSurname())
+                .setGender(entity.getGender().toString())
+                .setPosition(entity.getPosition().toString());
     }
 
     public static List<EmployeeDto> map(List<EmployeeEntity> entities){

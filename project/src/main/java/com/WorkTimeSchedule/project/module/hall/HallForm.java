@@ -7,5 +7,5 @@ import lombok.Setter;
 @Setter
 public class HallForm {
 
-    private String nazwa;
+    private String name;
 }
