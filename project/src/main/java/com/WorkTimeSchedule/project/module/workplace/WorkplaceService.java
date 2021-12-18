@@ -17,11 +17,11 @@ public class WorkplaceService {
     @Autowired
     private HallRepository hallRepository;
 
-    public WorkplaceEntity save(WorkplaceForm workplace) {
-        if (hallRepository.findOneByName(workplace.getHall()) != null) {
+    public WorkplaceEntity create(WorkplaceForm workplace) {
+        if (hallRepository.findOneByUuid(workplace.getHallUuid()) != null) {
             return workplaceRepository.saveAndFlush(new WorkplaceEntity(
                     workplace.getName(),
-                    hallRepository.findOneByName(workplace.getHall())));
+                    hallRepository.findOneByUuid(workplace.getHallUuid())));
 
         } else throw new EntityNotFoundException("Nie znaleziono takiej hali");
     }

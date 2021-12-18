@@ -1,9 +1,10 @@
-package com.WorkTimeSchedule.project.module.schedule.single;
+package com.WorkTimeSchedule.project.module.schedule;
 
 import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
 import com.WorkTimeSchedule.project.module.hall.HallEntity;
 import com.WorkTimeSchedule.project.module.workplace.WorkplaceEntity;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
@@ -23,7 +24,8 @@ import java.util.List;
 @Getter
 @Setter
 @Accessors(chain = true)
-public class SingleScheduleEntity {
+@NoArgsConstructor
+public class ScheduleEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -45,10 +47,10 @@ public class SingleScheduleEntity {
     @JoinColumn(name = "workplace_id")
     private List<WorkplaceEntity> workplaces;
 
-    public SingleScheduleEntity(LocalDate date, Time startTime, Time finishTime,
-                                List<HallEntity> halls,
-                                List<EmployeeEntity> employees,
-                                List<WorkplaceEntity> workplaces) {
+    public ScheduleEntity(LocalDate date, Time startTime, Time finishTime,
+                          List<HallEntity> halls,
+                          List<EmployeeEntity> employees,
+                          List<WorkplaceEntity> workplaces) {
         this.date = date;
         this.startTime = startTime;
         this.finishTime = finishTime;

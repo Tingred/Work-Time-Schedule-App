@@ -8,5 +8,5 @@ import lombok.Setter;
 public class WorkplaceForm {
 
     private String name;
-    private String hall;
+    private String hallUuid;
 }
