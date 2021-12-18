@@ -1,12 +1,12 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "cli": {
-    "analytics": "f2634f8f-70f2-4ca4-b7ec-cf58d6215bcc"
+    "analytics": "276e0ca8-d105-4c49-ae49-15f6ddf3ed22"
   },
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Work-Time-Schedule": {
+    "AngularProject": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:application": {
@@ -20,19 +20,22 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Work-Time-Schedule",
+            "outputPath": "dist/AngularProject",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "ngsw-config.json"
           },
           "configurations": {
             "production": {
@@ -71,10 +74,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Work-Time-Schedule:build:production"
+              "browserTarget": "AngularProject:build:production"
             },
             "development": {
-              "browserTarget": "Work-Time-Schedule:build:development"
+              "browserTarget": "AngularProject:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +85,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Work-Time-Schedule:build"
+            "browserTarget": "AngularProject:build"
           }
         },
         "test": {
@@ -94,7 +97,8 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/manifest.webmanifest"
             ],
             "styles": [
               "src/styles.css"
@@ -105,5 +109,5 @@
       }
     }
   },
-  "defaultProject": "Work-Time-Schedule"
+  "defaultProject": "AngularProject"
 }
