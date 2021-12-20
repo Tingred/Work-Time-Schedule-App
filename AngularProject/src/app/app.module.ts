@@ -8,6 +8,9 @@ import { StoreModule } from '@ngrx/store';
 import { reducers, metaReducers } from './reducers';
 import { CoreModule } from './core/core.module';
 import { ScheduleModule } from './schedule/schedule.module';
+import { OptionsModule } from './options/options.module';
+import { FirmModule } from './firm/firm.module';
+import { LoginModule } from './login/login.module';
 
 
 @NgModule({
@@ -28,7 +31,10 @@ import { ScheduleModule } from './schedule/schedule.module';
       metaReducers
     }),
     CoreModule,
-    ScheduleModule
+    ScheduleModule,
+    OptionsModule,
+    FirmModule,
+    LoginModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,18 +1,18 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OptionsComponent } from './options/options.component';
+import { SignInComponent } from './sign-in/sign-in.component';
 
 
 
 @NgModule({
   declarations: [
-    OptionsComponent
+    SignInComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    OptionsComponent
+    SignInComponent
   ]
 })
-export class OptionsModule { }
+export class LoginModule { }
