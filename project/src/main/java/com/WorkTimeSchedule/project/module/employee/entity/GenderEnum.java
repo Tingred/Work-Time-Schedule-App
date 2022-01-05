@@ -2,8 +2,8 @@ package com.WorkTimeSchedule.project.module.employee.entity;
 
 public enum GenderEnum {
     MEZCZYZNA("Mężczyzna"),
-    KOBIETA("Kobieta");
-
+    KOBIETA("Kobieta"),
+    INNA("Inna");
 
     public final String wartosc;
 

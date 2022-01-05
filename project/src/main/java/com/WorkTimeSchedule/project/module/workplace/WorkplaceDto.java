@@ -14,5 +14,5 @@ public class WorkplaceDto {
 
     private String uuid;
     private String name;
-    private List<EmployeeDto>  employees;
+    private List<String> positions;
 }

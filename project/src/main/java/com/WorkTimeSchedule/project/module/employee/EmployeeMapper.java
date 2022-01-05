@@ -13,7 +13,8 @@ public class EmployeeMapper {
                 .setName(entity.getName())
                 .setSurname(entity.getSurname())
                 .setGender(entity.getGender().toString())
-                .setPosition(entity.getPosition().toString());
+                .setPosition(entity.getPosition().toString())
+                .setTasks(entity.getTasks());
     }
 
     public static List<EmployeeDto> map(List<EmployeeEntity> entities){

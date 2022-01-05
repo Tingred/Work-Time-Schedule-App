@@ -9,11 +9,11 @@ public enum PositionEnum {
     MENADZER("Menadżer"),
     DYREKTOR("Dyrektor");
 
-    public final String wartosc;
+    public final String value;
 
 
-    private PositionEnum(String wartosc) {
-        this.wartosc = wartosc;
+    private PositionEnum(String value) {
+        this.value = value;
     }
 
     public static PositionEnum fromString(String str) {
@@ -26,6 +26,6 @@ public enum PositionEnum {
 
     @Override
     public String toString() {
-        return this.wartosc;
+        return this.value;
     }
 }

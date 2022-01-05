@@ -1,7 +1,8 @@
 package com.WorkTimeSchedule.project.module.workplace;
 
 import com.WorkTimeSchedule.project.module.employee.EmployeeMapper;
-import com.WorkTimeSchedule.project.module.hall.HallMapper;
+import com.WorkTimeSchedule.project.module.employee.entity.PositionEnum;
+//import com.WorkTimeSchedule.project.module.hall.HallMapper;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -17,6 +18,9 @@ public class WorkplaceMapper {
         return new WorkplaceDto()
                 .setName(entity.getName())
                 .setUuid(entity.getUuid())
-                .setEmployees(EmployeeMapper.map(entity.getEmployees()));
+                .setPositions(entity.getPositions()
+                                .stream()
+                                .map(PositionEnum::toString)
+                                .collect(Collectors.toList()));
     }
 }

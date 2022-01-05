@@ -9,12 +9,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface EmployeeRepisitory extends JpaRepository<EmployeeEntity, Long>, JpaSpecificationExecutor<EmployeeEntity> {
+public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long>, JpaSpecificationExecutor<EmployeeEntity> {
 
     EmployeeEntity getOneByUuid(String uuid);
 
     List<EmployeeEntity> findAll();
 
-    List<EmployeeEntity> findAllByStanowisko(PositionEnum stanowisko);
+    List<EmployeeEntity> findAllByPosition(PositionEnum position);
 
 }

@@ -5,7 +5,7 @@ import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface WorkplaceRepository extends JpaRepository<WorkplaceEntity, Integer>, JpaSpecificationExecutor<WorkplaceEntity> {
+public interface WorkplaceRepository extends JpaRepository<WorkplaceEntity, Long>, JpaSpecificationExecutor<WorkplaceEntity> {
 
     WorkplaceEntity findOneByUuid(String uuid);
 }

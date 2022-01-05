@@ -11,6 +11,9 @@ import { ScheduleModule } from './schedule/schedule.module';
 import { OptionsModule } from './options/options.module';
 import { FirmModule } from './firm/firm.module';
 import { LoginModule } from './login/login.module';
+import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -34,7 +37,9 @@ import { LoginModule } from './login/login.module';
     ScheduleModule,
     OptionsModule,
     FirmModule,
-    LoginModule
+    LoginModule,
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

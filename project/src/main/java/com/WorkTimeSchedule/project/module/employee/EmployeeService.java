@@ -1,6 +1,6 @@
 package com.WorkTimeSchedule.project.module.employee;
 
-import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
+
 import com.WorkTimeSchedule.project.module.employee.entity.PositionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,20 +11,20 @@ import java.util.List;
 public class EmployeeService {
 
     @Autowired
-    private  EmployeeRepisitory employeeRepisitory;
+    private  EmployeeRepository employeeRepository;
 
-    public EmployeeEntity getOneByUuid(String uuid) {
-        return employeeRepisitory.getOneByUuid(uuid);
+    public EmployeeDto getOneByUuid(String uuid) {
+        return EmployeeMapper.map(employeeRepository.getOneByUuid(uuid));
     };
 
-    public List<EmployeeEntity> findAll(){
-        return employeeRepisitory.findAll();
+    public List<EmployeeDto> findAll(){
+        return EmployeeMapper.map(employeeRepository.findAll());
     };
 
-    public List<EmployeeEntity> findAll(PositionEnum position) {
+    public List<EmployeeDto> findAll(PositionEnum position) {
         if(position!=null){
-            return employeeRepisitory.findAllByStanowisko(position);
+            return EmployeeMapper.map(employeeRepository.findAllByPosition(position));
         }
-        return employeeRepisitory.findAll();
+        return EmployeeMapper.map(employeeRepository.findAll());
     }
 }

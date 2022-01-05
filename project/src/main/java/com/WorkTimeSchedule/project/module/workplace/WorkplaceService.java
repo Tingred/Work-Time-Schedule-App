@@ -1,12 +1,14 @@
 package com.WorkTimeSchedule.project.module.workplace;
 
-import com.WorkTimeSchedule.project.module.hall.HallRepository;
+//import com.WorkTimeSchedule.project.module.hall.HallRepository;
+import com.WorkTimeSchedule.project.module.employee.entity.PositionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class WorkplaceService {
@@ -14,16 +16,13 @@ public class WorkplaceService {
     @Autowired
     private WorkplaceRepository workplaceRepository;
 
-    @Autowired
-    private HallRepository hallRepository;
-
-    public WorkplaceEntity create(WorkplaceForm workplace) {
-        if (hallRepository.findOneByUuid(workplace.getHallUuid()) != null) {
-            return workplaceRepository.saveAndFlush(new WorkplaceEntity(
-                    workplace.getName(),
-                    hallRepository.findOneByUuid(workplace.getHallUuid())));
-
-        } else throw new EntityNotFoundException("Nie znaleziono takiej hali");
+    public void create(WorkplaceForm workplace) {
+        workplaceRepository.saveAndFlush(new WorkplaceEntity(
+                workplace.getName(),
+                workplace.getPositions()
+                        .stream()
+                        .map(PositionEnum::fromString)
+                        .collect(Collectors.toList())));
     }
 
     public List<WorkplaceDto> getAll() {
@@ -34,11 +33,14 @@ public class WorkplaceService {
         return workplaceRepository.findOneByUuid(uuid);
     }
 
-    public void delete(WorkplaceEntity toDelete) {
+    public void delete(String uuid) {
+        WorkplaceEntity toDelete = workplaceRepository.findOneByUuid(uuid);
         workplaceRepository.delete(toDelete);
     }
 
-    public void update(WorkplaceEntity toUpdate) {
+    public void update(String uuid, WorkplaceForm form) {
+        WorkplaceEntity toUpdate = workplaceRepository.findOneByUuid(uuid);
+        toUpdate.setName(form.getName());
         workplaceRepository.saveAndFlush(toUpdate);
     }
 }
