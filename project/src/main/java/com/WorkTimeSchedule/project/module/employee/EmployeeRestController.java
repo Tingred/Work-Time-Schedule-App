@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,5 +34,11 @@ public class EmployeeRestController {
             @RequestParam(required = false) String position){
         PositionEnum value = PositionEnum.fromString(position);
         return employeeService.findAll(value);
+    }
+
+    @PutMapping(value = "/api/employee/{uuid}")
+    public void addTask(@PathVariable String uuid,
+                        @RequestBody String task){
+        employeeService.addTask(uuid,task);
     }
 }

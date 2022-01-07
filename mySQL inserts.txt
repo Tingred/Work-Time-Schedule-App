@@ -1,3 +1,5 @@
+-- pracownicy
+
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
 VALUES ('ec678d8d-356e-415f-94e1-3d8287a50d19','Marek','Jaworski','57439857623',3000,'MEZCZYZNA','WOZKOWY');
 
@@ -7,7 +9,7 @@ VALUES ('5eb2fbf3-c30a-4bf0-aaf9-07be817730c2','Adrian','Nieziemski','3523985332
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
 VALUES ('b2859ca2-a9b3-4e70-aab2-2258032cad97','Dominik','Bernacki','12375839251',4000,'MEZCZYZNA','MENADZER');
 
-INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position)  
+INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
 VALUES ('42e5fc87-03c9-4fae-8867-54735eeca054','Mateusz','Wisniewski','55532875641',3700,'MEZCZYZNA','KIEROWNIK_LINII');
 
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
@@ -17,11 +19,46 @@ INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position)
 VALUES ('fa4993b3-2817-4905-915f-b039594816f7','Agnieszka','Denna','57385967364',2800,'KOBIETA','PRACOWNIK_LINII');
 
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
+VALUES ('130dd892-6fb7-11ec-90d6-0242ac120003','Monika','Denna','57385967364',2800,'KOBIETA','PRACOWNIK_LINII');
+
+INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
+VALUES ('199c1034-6fb7-11ec-90d6-0242ac120003','Honorata','Siepa','57385967364',2800,'KOBIETA','PRACOWNIK_LINII');
+
+INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
 VALUES ('2ea6f5af-377b-44ba-b5a9-d77d3f2e43b2','Dominika','Izdebska','36284967461',3000,'KOBIETA','MAGAZYNIER');
 
+-- taski
+ 
+INSERT INTO tasks (text, employee_id,task_date)
+VALUES ('Poukladac palety',7,'2022-01-07')
 
-INSERT INTO hall(uuid,`name`)
-VALUES ('6e3e72f0-6d58-11ec-90d6-0242ac120003','Hala A');
+INSERT INTO tasks (text, employee_id,task_date)
+VALUES ('Poustawiać wszystkie wózki do ładowania na koniec zmiany',2,'2022-01-07')
 
-INSERT INTO hall(uuid,`name`)
-VALUES ('ecf34377-1872-4406-9f53-408a5d5ed995','Hala B');
+INSERT INTO tasks (text, employee_id,task_date)
+VALUES ('Wymienić baterię w wózku nr 3',1,'2022-01-07')
+
+-- miejsca pracy
+
+INSERT INTO workplace(uuid,`name`position)
+VALUES ('ecf34377-1872-4406-9f53-408a5d5ed995','Kierowanie - linia 1','KIEROWNIK_LINII');
+
+INSERT INTO workplace(uuid,`name`position)
+VALUES ('dcf34277-1872-4406-9f53-408a5d5ed995','Wazenie owoców - linia 1','PRACOWNIK_LINII');
+
+INSERT INTO workplace(uuid,`name`position)
+VALUES ('bcf38377-1872-4406-9f53-408a5d5ed995','Pakowanie - linia 1','PRACOWNIK_LINII');
+
+-- grafik
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-07','8:00:00','16:00:00','ecf34377-1872-4406-9f53-408a5d5ed995','42e5fc87-03c9-4fae-8867-54735eeca054')
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-07','8:00:00','16:00:00','dcf34277-1872-4406-9f53-408a5d5ed995','fa4993b3-2817-4905-915f-b039594816f7')
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-07','8:00:00','16:00:00','dcf34277-1872-4406-9f53-408a5d5ed995','130dd892-6fb7-11ec-90d6-0242ac120003')
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-07','8:00:00','16:00:00','bcf38377-1872-4406-9f53-408a5d5ed995','199c1034-6fb7-11ec-90d6-0242ac120003')

@@ -49,15 +49,12 @@ public class WorkplaceEntity {
     private String uuid;
     private String name;
 
-    @ElementCollection(targetClass = PositionEnum.class)
-    @JoinTable(name = "workplace_positions", joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "positions", nullable = false)
     @Enumerated(EnumType.STRING)
-    Collection<PositionEnum> positions;
+    private PositionEnum position;
 
-    public WorkplaceEntity(String name, Collection<PositionEnum> positions) {
+    public WorkplaceEntity(String name, PositionEnum positions) {
         this.uuid = UUID.randomUUID().toString();
         this.name = name;
-        this.positions = positions;
+        this.position = position;
     }
 }

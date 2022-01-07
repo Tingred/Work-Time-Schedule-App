@@ -1,6 +1,7 @@
 package com.WorkTimeSchedule.project.module.workplace;
 
 //import com.WorkTimeSchedule.project.module.hall.HallRepository;
+
 import com.WorkTimeSchedule.project.module.employee.entity.PositionEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,10 +20,7 @@ public class WorkplaceService {
     public void create(WorkplaceForm workplace) {
         workplaceRepository.saveAndFlush(new WorkplaceEntity(
                 workplace.getName(),
-                workplace.getPositions()
-                        .stream()
-                        .map(PositionEnum::fromString)
-                        .collect(Collectors.toList())));
+                PositionEnum.fromString(workplace.getPosition())));
     }
 
     public List<WorkplaceDto> getAll() {

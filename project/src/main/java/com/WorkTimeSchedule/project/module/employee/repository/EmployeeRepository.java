@@ -1,4 +1,4 @@
-package com.WorkTimeSchedule.project.module.employee;
+package com.WorkTimeSchedule.project.module.employee.repository;
 
 import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
 import com.WorkTimeSchedule.project.module.employee.entity.PositionEnum;
@@ -11,7 +11,7 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long>, JpaSpecificationExecutor<EmployeeEntity> {
 
-    EmployeeEntity getOneByUuid(String uuid);
+    EmployeeEntity findOneByUuid(String uuid);
 
     List<EmployeeEntity> findAll();
 
