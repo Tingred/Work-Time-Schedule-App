@@ -1,4 +1,4 @@
-package com.WorkTimeSchedule.project.module.employee;
+package com.WorkTimeSchedule.project.module.employee.dto;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,5 +16,5 @@ public class EmployeeDto {
     private String surname;
     private String gender;
     private String position;
-    private List<String> tasks;
+    private List<TaskDto> tasks;
 }

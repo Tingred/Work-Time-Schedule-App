@@ -13,12 +13,14 @@ import { FirmModule } from './firm/firm.module';
 import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ValueArrayPipe } from './pipes/value-array.pipe';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
+    ValueArrayPipe
 
   ],
   imports: [

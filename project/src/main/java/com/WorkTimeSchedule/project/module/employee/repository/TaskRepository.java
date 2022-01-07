@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface TaskRepository extends JpaRepository<TaskEntity, Long>, JpaSpecificationExecutor<TaskEntity> {
 
-    @Query(value = "SELECT text FROM tasks t WHERE t.employee = :id", nativeQuery = true)
-    List<String> findTextByEmployeeId(Long id);
+    List<TaskEntity> findAllByEmployeeId(Long id);
+    TaskEntity findOneByUuid(String uuid);
 }

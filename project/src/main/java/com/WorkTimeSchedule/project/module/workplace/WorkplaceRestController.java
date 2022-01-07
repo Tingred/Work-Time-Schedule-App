@@ -24,6 +24,11 @@ public class WorkplaceRestController {
         return workplaceService.getAll();
     }
 
+    @GetMapping(value = "/api/workplace/positions")
+    public List<String> getPositions() {
+        return workplaceService.getPositions();
+    }
+
     @PostMapping(value = "/api/workplace/new")
     public void newWorkplace(
             @RequestBody WorkplaceForm workplace){

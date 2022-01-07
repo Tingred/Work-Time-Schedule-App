@@ -27,3 +27,6 @@ button.btt:hover {
     background-color: rgb(82, 82, 230);
     transition: 0.5s;
 }
+.new-workplace {
+    border: 1px solid black;
+}

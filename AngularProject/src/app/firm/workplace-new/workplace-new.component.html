@@ -1,0 +1,11 @@
+<div class="new-workplace">
+    <form [formGroup]="form">
+    <label for="name">Dodaj nowe stanowisko pracy:</label>
+    <input formControlName="name" type="string" placeholder="Podaj nazwę">
+    <select formControlName="position">
+        <option value="" disabled>Wybierz kwalifikację</option>
+        <option *ngFor="let position of positions?.flags" [ngValue]="position">{{ position }}</option>
+    </select>
+    <button class="btt" (click)="addNew()">Dodaj</button>
+    </form>
+</div>

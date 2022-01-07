@@ -1,13 +1,15 @@
-package com.WorkTimeSchedule.project.module.employee;
+package com.WorkTimeSchedule.project.module.employee.mapper;
 
+import com.WorkTimeSchedule.project.module.employee.dto.EmployeeDto;
+import com.WorkTimeSchedule.project.module.employee.dto.TaskDto;
 import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
+import com.WorkTimeSchedule.project.module.employee.entity.TaskEntity;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class EmployeeMapper {
 
-    public static EmployeeDto map(EmployeeEntity entity,List<String> tasks){
+    public static EmployeeDto map(EmployeeEntity entity, List<TaskDto> tasks){
         return new EmployeeDto()
                 .setUuid(entity.getUuid())
                 .setName(entity.getName())

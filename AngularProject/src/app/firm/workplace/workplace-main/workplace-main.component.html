@@ -1,1 +1,13 @@
-<p>Tu będzie zarządzanie stanowiskami</p>
+<app-workplace-new></app-workplace-new>
+    <div class="view">
+        <div *ngIf="workplaces">
+            <a *ngFor="let workplace of workplaces?.flags">
+            <div class="workplace-body">
+                <span>{{ workplace.name }}</span>
+            </div>
+        </a>
+    </div>
+</div>
+
+
+

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.persistence.EntityNotFoundException;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -40,5 +41,10 @@ public class WorkplaceService {
         WorkplaceEntity toUpdate = workplaceRepository.findOneByUuid(uuid);
         toUpdate.setName(form.getName());
         workplaceRepository.saveAndFlush(toUpdate);
+    }
+
+    public List<String> getPositions() {
+        PositionEnum[] positions = PositionEnum.class.getEnumConstants();
+        return Arrays.stream(positions).map(c -> c.toString()).collect(Collectors.toList());
     }
 }

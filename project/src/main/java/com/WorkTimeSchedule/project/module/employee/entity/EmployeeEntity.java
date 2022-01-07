@@ -37,7 +37,7 @@ public class EmployeeEntity {
     private Long pesel;
     private Long salary;
 
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(mappedBy = "employee",cascade = CascadeType.ALL, orphanRemoval = true)
     private List<TaskEntity> tasks = new ArrayList<>();
 
     @Enumerated(EnumType.STRING)

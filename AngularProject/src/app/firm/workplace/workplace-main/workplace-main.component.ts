@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { WorkplaceService } from 'src/app/services/workplace.service';
+
 @Component({
   selector: 'app-workplace-main',
   templateUrl: './workplace-main.component.html',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class WorkplaceMainComponent implements OnInit {
 
-  constructor() { }
+  workplaces: any = [];
+  workplace: any;
 
-  ngOnInit(): void {
+  constructor(private workplaceService:WorkplaceService) { }
+  
+  
+
+  ngOnInit() {
+    this.getAllWorkplaces();
   }
+  
 
+
+  getAllWorkplaces() {
+    return this.workplaceService.getAll().subscribe(response => {
+      this.workplaces = response;
+    });
+  }
 }

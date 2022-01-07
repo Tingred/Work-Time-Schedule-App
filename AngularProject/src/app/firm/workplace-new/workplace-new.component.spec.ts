@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HallMainComponent } from './hall-main.component';
+import { WorkplaceNewComponent } from './workplace-new.component';
 
-describe('HallMainComponent', () => {
-  let component: HallMainComponent;
-  let fixture: ComponentFixture<HallMainComponent>;
+describe('WorkplaceNewComponent', () => {
+  let component: WorkplaceNewComponent;
+  let fixture: ComponentFixture<WorkplaceNewComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ HallMainComponent ]
+      declarations: [ WorkplaceNewComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(HallMainComponent);
+    fixture = TestBed.createComponent(WorkplaceNewComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
