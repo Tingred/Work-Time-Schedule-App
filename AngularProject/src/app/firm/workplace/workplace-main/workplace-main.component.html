@@ -1,11 +1,17 @@
 <app-workplace-new></app-workplace-new>
     <div class="view">
-        <div *ngIf="workplaces">
-            <a *ngFor="let workplace of workplaces?.flags">
-            <div class="workplace-body">
-                <span>{{ workplace.name }}</span>
+        <div *ngIf="(workplaces | async) as workplaces">
+            <div class="a-workplace" *ngFor="let workplace of workplaces">
+                <p><strong>Stanowisko:</strong>
+                    <br/>
+                    {{ workplace.name }}
+                </p>
+                <p><strong>Uprawnienia:</strong>
+                    <br/>
+                    {{ workplace.position }}
+                </p> 
+                <div class="left"><button class="btt" (click)="delete(workplace.uuid)">Usuń</button></div>
             </div>
-        </a>
     </div>
 </div>
 

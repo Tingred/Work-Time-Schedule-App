@@ -1,12 +1,15 @@
 package com.WorkTimeSchedule.project.module.employee.entity;
 
+import java.util.Arrays;
+import java.util.Optional;
+
 public enum PositionEnum {
     PRACOWNIK_LINII("Pracownik linii"),
-    WOZKOWY("Wózkowy"),
+    WOZKOWY("Wozkowy"),
     KIEROWNIK_LINII("Kierownik linii"),
     KIEROWNIK_HALI("Kierownik hali"),
     MAGAZYNIER("Magazynier"),
-    MENADZER("Menadżer"),
+    MENADZER("Menadzer"),
     DYREKTOR("Dyrektor");
 
     public final String value;
@@ -16,12 +19,8 @@ public enum PositionEnum {
         this.value = value;
     }
 
-    public static PositionEnum fromString(String str) {
-        try{
-            return valueOf(str.toUpperCase());
-        }catch (Exception e){
-            return PRACOWNIK_LINII;
-        }
+    public String getValue() {
+        return value;
     }
 
     @Override

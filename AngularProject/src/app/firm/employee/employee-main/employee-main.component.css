@@ -2,3 +2,23 @@ p {
     font-size: 30px;
     text-align: center;
 }
+div.view {
+    text-align: center;
+    margin-left: 15%;
+    margin-right: 15%;
+    height: 100%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    background-color: rgb(180, 180, 180);
+}
+div.a-employee{
+    background-color: rgb(196, 226, 255);
+    margin: 1%;
+    display: inline-block;
+    height: 15%;
+    width: 25%;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 4px;
+    
+}

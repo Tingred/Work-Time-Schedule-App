@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.persistence.EntityNotFoundException;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Locale;
 import java.util.stream.Collectors;
 
 @Service
@@ -19,9 +20,9 @@ public class WorkplaceService {
     private WorkplaceRepository workplaceRepository;
 
     public void create(WorkplaceForm workplace) {
+        String enumValue =workplace.getPosition().trim().replaceAll(" ","_").toUpperCase();
         workplaceRepository.saveAndFlush(new WorkplaceEntity(
-                workplace.getName(),
-                PositionEnum.fromString(workplace.getPosition())));
+                workplace.getName()).setPosition(PositionEnum.valueOf(enumValue)));
     }
 
     public List<WorkplaceDto> getAll() {

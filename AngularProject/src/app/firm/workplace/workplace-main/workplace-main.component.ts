@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Workplace } from 'src/app/interfaces/workplace';
 
 import { WorkplaceService } from 'src/app/services/workplace.service';
 
@@ -9,22 +11,26 @@ import { WorkplaceService } from 'src/app/services/workplace.service';
 })
 export class WorkplaceMainComponent implements OnInit {
 
-  workplaces: any = [];
-  workplace: any;
+  workplaces: Observable<Workplace[]> =  this.workplaceService.getAll();
 
   constructor(private workplaceService:WorkplaceService) { }
   
   
 
   ngOnInit() {
-    this.getAllWorkplaces();
+  
+  }
+  delete(uuid: string | undefined){
+    if(uuid)
+    this.workplaceService.deleteWorkplace(uuid);
   }
   
 
-
-  getAllWorkplaces() {
-    return this.workplaceService.getAll().subscribe(response => {
+/*
+  get allWorkplaces() {
+    return this.workplaceService.getAll();.subscribe(response => {
+      console.log(response);
       this.workplaces = response;
     });
-  }
+  }*/
 }

@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
-import { reducers, metaReducers } from './reducers';
 import { CoreModule } from './core/core.module';
 import { ScheduleModule } from './schedule/schedule.module';
 import { OptionsModule } from './options/options.module';
@@ -14,8 +13,6 @@ import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValueArrayPipe } from './pipes/value-array.pipe';
-
-
 
 @NgModule({
   declarations: [
@@ -31,9 +28,6 @@ import { ValueArrayPipe } from './pipes/value-array.pipe';
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
       registrationStrategy: 'registerWhenStable:30000'
-    }),
-    StoreModule.forRoot(reducers, {
-      metaReducers
     }),
     CoreModule,
     ScheduleModule,

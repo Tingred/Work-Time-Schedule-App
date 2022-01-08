@@ -9,7 +9,6 @@ import { ValueArrayPipe } from '../pipes/value-array.pipe';
 
 
 
-
 @NgModule({
   declarations: [
     WorkplaceMainComponent,

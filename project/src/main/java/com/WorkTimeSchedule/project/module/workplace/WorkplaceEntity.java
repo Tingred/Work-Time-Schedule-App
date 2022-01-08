@@ -52,9 +52,8 @@ public class WorkplaceEntity {
     @Enumerated(EnumType.STRING)
     private PositionEnum position;
 
-    public WorkplaceEntity(String name, PositionEnum positions) {
+    public WorkplaceEntity(String name) {
         this.uuid = UUID.randomUUID().toString();
         this.name = name;
-        this.position = position;
     }
 }

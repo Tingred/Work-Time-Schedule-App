@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 import { ValueArrayPipe } from 'src/app/pipes/value-array.pipe';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-workplace-new',
@@ -15,7 +16,7 @@ export class WorkplaceNewComponent implements OnInit {
     position: new FormControl('')
   });
 
-  positions: any= [];
+  positions: Observable<string[]> = this.workplaceService.getPositions();
   
 
 
@@ -24,19 +25,17 @@ export class WorkplaceNewComponent implements OnInit {
     private fb: FormBuilder) { }
 
   ngOnInit() {
-    this.getPositions();
-  }
-
   
+  }
 
   addNew() {
     const workplaceFromForm = this.form.value;
     this.workplaceService.addNew(workplaceFromForm);  
   }
-
+/*
   getPositions() {
-    this.workplaceService.getPositions().subscribe(response => {
+    .subscribe(response => {
       this.positions = response;
     });
-  }
+  }*/
 }

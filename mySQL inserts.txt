@@ -30,13 +30,13 @@ VALUES ('2ea6f5af-377b-44ba-b5a9-d77d3f2e43b2','Dominika','Izdebska','3628496746
 -- taski
  
 INSERT INTO tasks (text, employee_id,task_date,uuid)
-VALUES ('Poukladac palety',7,'2022-01-07',962dbc0b-7f5b-4380-8b7e-b5ee11e06382);
+VALUES ('Poukladac palety',7,'2022-01-07','962dbc0b-7f5b-4380-8b7e-b5ee11e06382');
 
 INSERT INTO tasks (text, employee_id,task_date,uuid)
-VALUES ('Poustawiać wszystkie wózki do ładowania na koniec zmiany',2,'2022-01-07',456422da-e7f7-4dfd-95f2-cc1b19db006e);
+VALUES ('Poustawiać wszystkie wózki do ładowania na koniec zmiany',2,'2022-01-07','456422da-e7f7-4dfd-95f2-cc1b19db006e');
 
 INSERT INTO tasks (text, employee_id,task_date,uuid)
-VALUES ('Wymienić baterię w wózku nr 3',1,'2022-01-07',50d628e7-f7e4-4b8f-a10c-2098217a28bb);
+VALUES ('Wymienić baterię w wózku nr 3',1,'2022-01-07','50d628e7-f7e4-4b8f-a10c-2098217a28bb');
 
 -- miejsca pracy
 
@@ -62,3 +62,18 @@ VALUES ('2022-01-07','8:00:00','16:00:00','dcf34277-1872-4406-9f53-408a5d5ed995'
 
 INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
 VALUES ('2022-01-07','8:00:00','16:00:00','bcf38377-1872-4406-9f53-408a5d5ed995','199c1034-6fb7-11ec-90d6-0242ac120003');
+
+-- grafik druga data
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-08','8:00:00','16:00:00','ecf34377-1872-4406-9f53-408a5d5ed995','42e5fc87-03c9-4fae-8867-54735eeca054');
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-08','8:00:00','16:00:00','dcf34277-1872-4406-9f53-408a5d5ed995','fa4993b3-2817-4905-915f-b039594816f7');
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-08','8:00:00','16:00:00','dcf34277-1872-4406-9f53-408a5d5ed995','130dd892-6fb7-11ec-90d6-0242ac120003');
+
+INSERT INTO schedule (schedule_date,start_time,finish_time,workplace_uuid,employee_uuid)
+VALUES ('2022-01-08','8:00:00','16:00:00','bcf38377-1872-4406-9f53-408a5d5ed995','199c1034-6fb7-11ec-90d6-0242ac120003');
+

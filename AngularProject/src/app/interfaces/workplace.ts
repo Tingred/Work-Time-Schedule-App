@@ -1,5 +1,5 @@
 export interface Workplace {
-    uuid: string;
+    uuid?: string;
     name: string;
     position: string;
 }

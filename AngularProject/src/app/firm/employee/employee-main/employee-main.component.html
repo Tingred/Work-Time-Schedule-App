@@ -1,1 +1,17 @@
-<p>Tu będą opcje z pracownikami</p>
+<div class="view">
+    <div *ngIf="(employees | async) as employees">
+        <div class="a-employee" *ngFor="let employee of employees">
+            <p><strong>Imię i nazwisko:</strong>
+                <br/>
+                {{ employee.name }} {{ employee.surname }}
+            </p>
+            <p><strong>Płeć:</strong>
+                <br/>
+                {{ employee.gender }}
+            </p>
+            <p><strong>Uprawnienia:</strong>
+                <br/>
+                {{ employee.position }}
+            </p> 
+        </div>
+</div>

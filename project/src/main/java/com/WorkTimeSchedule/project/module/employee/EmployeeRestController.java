@@ -31,10 +31,10 @@ public class EmployeeRestController {
         return employeeService.findAll();
     }
 
-    @GetMapping(value = "/api/employee")
+    @GetMapping(value = "/api/employee/by-position")
     public List<EmployeeDto> getEmployeesByPosition(
-            @RequestParam(required = false) String position){
-        PositionEnum value = PositionEnum.fromString(position);
+            @RequestParam String position){
+        PositionEnum value = PositionEnum.valueOf(position);
         return employeeService.findAll(value);
     }
 
