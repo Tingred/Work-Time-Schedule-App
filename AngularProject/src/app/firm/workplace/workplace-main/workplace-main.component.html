@@ -1,6 +1,6 @@
 <app-workplace-new></app-workplace-new>
     <div class="view">
-        <div *ngIf="(workplaces | async) as workplaces">
+        <div *ngIf="(workplaces$ | async) as workplaces">
             <div class="a-workplace" *ngFor="let workplace of workplaces">
                 <p><strong>Stanowisko:</strong>
                     <br/>
