@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { AppState } from 'src/app/interfaces/store';
 import { Workplace } from 'src/app/interfaces/workplace';
 
-import { WorkplaceService } from 'src/app/services/workplace.service';
+import * as fromSelectors from '../../store/firm/firm.selectors';
 
 @Component({
   selector: 'app-workplace-main',
@@ -11,9 +13,11 @@ import { WorkplaceService } from 'src/app/services/workplace.service';
 })
 export class WorkplaceMainComponent implements OnInit {
 
-  workplaces: Observable<Workplace[]> =  this.workplaceService.getAll();
+  workplaces$: Observable<Workplace[]> =  this.store$.pipe(select(fromSelectors.selectWorkplaces));
 
-  constructor(private workplaceService:WorkplaceService) { }
+  constructor(
+    private store$: Store<AppState>
+    ) { }
   
   
 
@@ -21,8 +25,7 @@ export class WorkplaceMainComponent implements OnInit {
   
   }
   delete(uuid: string | undefined){
-    if(uuid)
-    this.workplaceService.deleteWorkplace(uuid);
+    // this.workplaceService.deleteWorkplace(uuid);
   }
   
 

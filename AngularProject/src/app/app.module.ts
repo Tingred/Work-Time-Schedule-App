@@ -13,6 +13,10 @@ import { LoginModule } from './login/login.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValueArrayPipe } from './pipes/value-array.pipe';
+import { EffectsModule } from '@ngrx/effects';
+import * as fromFirmReducer from './firm/store/firm/firm.reducer';
+import { FirmEffects } from './firm/store/firm/firm.effect';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({
   declarations: [
@@ -36,7 +40,9 @@ import { ValueArrayPipe } from './pipes/value-array.pipe';
     LoginModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({}, {})
+    StoreModule.forRoot({firm: fromFirmReducer.firmReducer}, {}),
+    EffectsModule.forRoot([FirmEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
   ],
   providers: [],
   bootstrap: [AppComponent]
