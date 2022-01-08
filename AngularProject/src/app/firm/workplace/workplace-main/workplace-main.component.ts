@@ -5,6 +5,7 @@ import { AppState } from 'src/app/interfaces/store';
 import { Workplace } from 'src/app/interfaces/workplace';
 
 import * as fromSelectors from '../../store/firm/firm.selectors';
+import * as fromActions from '../../store/firm/firm.actions';
 
 @Component({
   selector: 'app-workplace-main',
@@ -22,10 +23,11 @@ export class WorkplaceMainComponent implements OnInit {
   
 
   ngOnInit() {
-  
+    this.store$.dispatch(fromActions.getAllWorkplaces());
   }
+  
   delete(uuid: string | undefined){
-    // this.workplaceService.deleteWorkplace(uuid);
+    this.store$.dispatch(fromActions.deleteWorkplace({uuid: uuid as string}));
   }
   
 

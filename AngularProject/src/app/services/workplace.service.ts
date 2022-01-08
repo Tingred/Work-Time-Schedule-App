@@ -24,7 +24,7 @@ export class WorkplaceService {
   }
 
   deleteWorkplace(uuid: string) {
-    return this.http.delete(`http://localhost:8080/api/workplace/delete/${uuid}`).subscribe();
+    return this.http.delete(`http://localhost:8080/api/workplace/delete/${uuid}`);
   }
 
   updateWorkplace(workplace:Workplace, uuid:string) {

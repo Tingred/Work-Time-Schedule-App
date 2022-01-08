@@ -18,6 +18,10 @@ const _firmReducer = createReducer(
         ...state,
         workplaces
     })),
+    on(fromActions.deleteWorkplaceSuccess, (state, {uuid}) => ({
+        ...state,
+        workplaces: [...state.workplaces.filter(w => w.uuid !== uuid)]
+    })),
 );
 
 export function firmReducer(state: FirmState | undefined, action: Action) {
