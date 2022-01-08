@@ -30,9 +30,10 @@ public class WorkplaceRestController {
     }
 
     @PostMapping(value = "/api/workplace/new")
-    public void newWorkplace(
+    public WorkplaceDto newWorkplace(
             @RequestBody WorkplaceForm workplace){
-       workplaceService.create(workplace);
+        return workplaceService.create(workplace);
+
     }
 
     @DeleteMapping(value = "/api/workplace/delete/{uuid}")

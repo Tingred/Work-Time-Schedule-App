@@ -3,6 +3,9 @@ import { FormBuilder, FormControl } from '@angular/forms';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 import { ValueArrayPipe } from 'src/app/pipes/value-array.pipe';
 import { Observable } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { AppState } from 'src/app/interfaces/store'
+import * as fromActions from '../store/firm/firm.actions'
 
 @Component({
   selector: 'app-workplace-new',
@@ -22,15 +25,18 @@ export class WorkplaceNewComponent implements OnInit {
 
   constructor(
     private workplaceService: WorkplaceService,
+    private store$: Store<AppState>,
     private fb: FormBuilder) { }
 
   ngOnInit() {
   
   }
 
+
   addNew() {
     const workplaceFromForm = this.form.value;
-    this.workplaceService.addNew(workplaceFromForm);  
+    this.store$.dispatch(fromActions.addWorkplace({workplace: workplaceFromForm}));
+    //this.workplaceService.addNew(workplaceFromForm);  
   }
 /*
   getPositions() {

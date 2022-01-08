@@ -31,8 +31,8 @@ export class WorkplaceService {
     return this.http.put(`http://localhost:8080/api/workplace/delete/${uuid}`, workplace, httpOptions).subscribe();
   }
 
-  addNew(workplace:Workplace) {
+  addNew(workplace:Workplace): Observable<Workplace> {
     console.log('dupa')
-    return this.http.post(`http://localhost:8080/api/workplace/new`, workplace, httpOptions).subscribe();
+    return this.http.post(`http://localhost:8080/api/workplace/new`, workplace,  { observe: 'response' }).pipe(map( response=> response.body as Workplace));
   }
 }

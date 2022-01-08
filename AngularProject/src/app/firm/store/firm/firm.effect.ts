@@ -6,10 +6,11 @@ import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 import * as fromActions from './firm.actions';
 
+
 @Injectable()
 export class FirmEffects {
 
-  public getAllEmployees$ = createEffect(() =>
+  public getAllWorkplaces$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.getAllWorkplaces),
       switchMap(() => this.workplaceService.getAll().pipe(
@@ -19,22 +20,32 @@ export class FirmEffects {
     ), { dispatch: true }
   );
 
-  public deleteEmployee$ = createEffect(() =>
+  public deleteWorkplace$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.deleteWorkplace),
       switchMap(({uuid}) => this.workplaceService.deleteWorkplace(uuid).pipe(
         map(() => fromActions.deleteWorkplaceSuccess({uuid})),
         catchError((message) => of(fromActions.deleteWorkplaceFailure({message})))
       ))
-    ), { dispatch: false }
-  );
-
-  public deleteWorkplaceSuccess$ = createEffect(() =>
-    this.actions$.pipe(
-      ofType(fromActions.deleteWorkplaceSuccess),
-      map(() => fromActions.getAllWorkplaces())
     ), { dispatch: true }
   );
+
+  public addWorkplace$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.addWorkplace),
+      switchMap(({workplace}) => this.workplaceService.addNew(workplace).pipe(
+        map((newWorkplace) => fromActions.addWorkplaceSuccess({workplace: newWorkplace})),
+        catchError((message) => of(fromActions.addWorkplaceFailure({message})))
+      ))
+    ), { dispatch: true }
+  );
+
+  // public deleteWorkplaceSuccess$ = createEffect(() =>
+  //   this.actions$.pipe(
+  //     ofType(fromActions.deleteWorkplaceSuccess),
+  //     map(() => fromActions.getAllWorkplaces())
+  //   ), { dispatch: true }
+  // );
 
   constructor(
     private actions$: Actions,

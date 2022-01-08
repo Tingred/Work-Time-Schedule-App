@@ -19,10 +19,10 @@ public class WorkplaceService {
     @Autowired
     private WorkplaceRepository workplaceRepository;
 
-    public void create(WorkplaceForm workplace) {
-        String enumValue =workplace.getPosition().trim().replaceAll(" ","_").toUpperCase();
-        workplaceRepository.saveAndFlush(new WorkplaceEntity(
-                workplace.getName()).setPosition(PositionEnum.valueOf(enumValue)));
+    public WorkplaceDto create(WorkplaceForm workplace) {
+        String enumValue = workplace.getPosition().trim().replaceAll(" ","_").toUpperCase();
+        return WorkplaceMapper.map(workplaceRepository.saveAndFlush(new WorkplaceEntity(
+                workplace.getName()).setPosition(PositionEnum.valueOf(enumValue))));
     }
 
     public List<WorkplaceDto> getAll() {

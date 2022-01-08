@@ -30,3 +30,18 @@ export const deleteWorkplaceFailure = createAction(
     '[WORKPLACE] Delete all employees failure',
     props<{message: string}>()
 );
+
+export const addWorkplace = createAction(
+    '[WORKPLACE] add all employees',
+    props<{workplace: Workplace}>()
+);
+
+export const addWorkplaceSuccess = createAction(
+    '[WORKPLACE] add all employees success',
+    props<{workplace: Workplace}>()
+);
+
+export const addWorkplaceFailure = createAction(
+    '[WORKPLACE] add all employees failure',
+    props<{message: string}>()
+);
