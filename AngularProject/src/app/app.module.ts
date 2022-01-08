@@ -35,7 +35,8 @@ import { ValueArrayPipe } from './pipes/value-array.pipe';
     FirmModule,
     LoginModule,
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({}, {})
   ],
   providers: [],
   bootstrap: [AppComponent]
