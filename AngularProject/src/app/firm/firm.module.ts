@@ -5,6 +5,8 @@ import { EmployeeMainComponent } from './employee/employee-main/employee-main.co
 import { ReactiveFormsModule } from '@angular/forms';
 import { WorkplaceNewComponent } from './workplace-new/workplace-new.component';
 import { ValueArrayPipe } from '../pipes/value-array.pipe';
+import { EmployeeTasksComponent } from './employee-tasks/employee-tasks.component';
+import { RouterModule } from '@angular/router';
 
 
 
@@ -13,11 +15,13 @@ import { ValueArrayPipe } from '../pipes/value-array.pipe';
   declarations: [
     WorkplaceMainComponent,
     EmployeeMainComponent,
-    WorkplaceNewComponent
+    WorkplaceNewComponent,
+    EmployeeTasksComponent
   ],
   imports: [
     CommonModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterModule
   ],
   exports: [
     WorkplaceMainComponent,
