@@ -10,3 +10,8 @@ export const selectWorkplaces = createSelector(
   selectState,
   fromReducer.getWorkplaces
 )
+
+export const selectEmployees = createSelector(
+  selectState,
+  fromReducer.getEmployees
+)

@@ -1,14 +1,17 @@
 import { Action, createFeatureSelector, createReducer, on, State } from '@ngrx/store';
+import { Employee } from 'src/app/interfaces/employee';
 import { AppState } from 'src/app/interfaces/store';
 import { Workplace } from 'src/app/interfaces/workplace';
 import * as fromActions from './firm.actions';
 
 export interface FirmState {
     workplaces: Array<Workplace>;
+    employees: Array<Employee>;
 }
 
 export const initialState: FirmState = {
     workplaces: [],
+    employees: [],
 };
 
 
@@ -29,6 +32,10 @@ const _firmReducer = createReducer(
             workplace
         ]
     })),
+    on(fromActions.getAllEmployeesSuccess, (state, {employees}) => ({
+        ...state,
+        employees
+    })),
 );
 
 export function firmReducer(state: FirmState | undefined, action: Action) {
@@ -37,3 +44,4 @@ export function firmReducer(state: FirmState | undefined, action: Action) {
 
 export const selectState = (state: AppState) => state.firm;
 export const getWorkplaces = (state: FirmState) => state.workplaces;
+export const getEmployees = (state: FirmState) => state.employees;

@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
 import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
+import { EmployeeService } from 'src/app/services/employee.service';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 import * as fromActions from './firm.actions';
 
@@ -40,6 +41,16 @@ export class FirmEffects {
     ), { dispatch: true }
   );
 
+  public getAllEmployees$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(fromActions.getAllEmployees),
+      switchMap(() => this.employeeService.getAll().pipe(
+        map((body) => fromActions.getAllEmployeesSuccess({employees: body})),
+        catchError((message) => of(fromActions.getAllEmployeesFailure({message})))
+      ))
+    ), { dispatch: true }
+  );
+
   // public deleteWorkplaceSuccess$ = createEffect(() =>
   //   this.actions$.pipe(
   //     ofType(fromActions.deleteWorkplaceSuccess),
@@ -49,6 +60,7 @@ export class FirmEffects {
 
   constructor(
     private actions$: Actions,
-    private workplaceService: WorkplaceService
+    private workplaceService: WorkplaceService,
+    private employeeService: EmployeeService
   ) {}
 }

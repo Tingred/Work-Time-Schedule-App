@@ -1,5 +1,5 @@
 <div class="view">
-    <div *ngIf="(employees | async) as employees">
+    <div *ngIf="(employees$ | async) as employees">
         <div class="a-employee" *ngFor="let employee of employees">
             <p><strong>Imię i nazwisko:</strong>
                 <br/>
