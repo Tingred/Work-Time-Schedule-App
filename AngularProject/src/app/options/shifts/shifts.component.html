@@ -1,0 +1,17 @@
+<app-shift-new></app-shift-new>
+    <div class="view">
+        <div *ngIf="(shifts$ | async) as shifts">
+            <div class="a-shift" *ngFor="let shift of shifts">
+                <p><strong>Początek:</strong>
+                    <br/>
+                    {{ shift.startTime }}
+                </p>
+                <p><strong>Koniec:</strong>
+                    <br/>
+                    {{ shift.finishTime}}
+                </p> 
+                <div class="left"><button class="btt" (click)="delete( shift.uuid )">Usuń</button></div>
+            </div>
+    </div>
+</div>
+

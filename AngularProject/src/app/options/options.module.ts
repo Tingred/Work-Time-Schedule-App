@@ -1,18 +1,22 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { OptionsComponent } from './options/options.component';
+import { ShiftsComponent } from './shifts/shifts.component';
+import { ShiftNewComponent } from './shift-new/shift-new.component';
 
 
 
 @NgModule({
   declarations: [
-    OptionsComponent
+    ShiftsComponent,
+    ShiftNewComponent
   ],
   imports: [
     CommonModule
   ],
   exports: [
-    OptionsComponent
+    ShiftsComponent,
+    ShiftNewComponent
+    
   ]
 })
 export class OptionsModule { }

@@ -1,4 +1,3 @@
-import { ETask } from "./etask";
 
 export interface Employee {
     uuid:string;
@@ -6,5 +5,4 @@ export interface Employee {
     surname:string;
     gender:string;
     position:string;
-    tasks:ETask[];
 }

@@ -1,0 +1,9 @@
+<div class="new-task">
+    <form [formGroup]="form">
+        <my-date-picker name="mydate" [options]="myDatePickerOptions"
+                    formControlName="myDate"></my-date-picker>
+    <label for="text">Dodaj nowe zadanie:</label>
+    <input formControlName="text" type="text" placeholder="Podaj treść zadania">
+    <button class="btt" (click)="addTask(uuid)">Dodaj</button>
+    </form>
+</div>

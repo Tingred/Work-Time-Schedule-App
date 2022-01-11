@@ -3,8 +3,8 @@ import { select, Store } from '@ngrx/store';
 import { Observable, of } from 'rxjs';
 import { AppState } from 'src/app/interfaces/store';
 import { Workplace } from 'src/app/interfaces/workplace';
-import * as fromSelectors from '../../store/firm/firm.selectors';
-import * as fromActions from '../../store/firm/firm.actions';
+import * as fromSelectors from '../../../store/firm/firm.selectors';
+import * as fromActions from '../../../store/firm/firm.actions';
 
 @Component({
   selector: 'app-workplace-main',

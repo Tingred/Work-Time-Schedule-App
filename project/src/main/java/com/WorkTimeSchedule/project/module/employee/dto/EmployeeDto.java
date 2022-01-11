@@ -16,5 +16,5 @@ public class EmployeeDto {
     private String surname;
     private String gender;
     private String position;
-    private List<TaskDto> tasks;
+
 }

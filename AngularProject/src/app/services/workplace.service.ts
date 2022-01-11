@@ -32,7 +32,6 @@ export class WorkplaceService {
   }
 
   addNew(workplace:Workplace): Observable<Workplace> {
-    console.log('dupa')
     return this.http.post(`http://localhost:8080/api/workplace/new`, workplace,  { observe: 'response' }).pipe(map( response=> response.body as Workplace));
   }
 }

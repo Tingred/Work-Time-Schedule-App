@@ -14,8 +14,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValueArrayPipe } from './pipes/value-array.pipe';
 import { EffectsModule } from '@ngrx/effects';
-import * as fromFirmReducer from './firm/store/firm/firm.reducer';
-import { FirmEffects } from './firm/store/firm/firm.effect';
+import * as fromFirmReducer from './store/firm/firm.reducer';
+import { FirmEffects } from './store/firm/firm.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 @NgModule({

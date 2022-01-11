@@ -18,7 +18,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) {
    }
 
-   getAll(): Observable<Employee[]> {
+   getAllEmployees(): Observable<Employee[]> {
     return this.http.get(`http://localhost:8080/api/employees`, { observe: 'response' }).pipe(map( response=> response.body as Employee[]));
   }
 
@@ -29,11 +29,15 @@ export class EmployeeService {
     return this.http.get(`http://localhost:8080/api/employee/${uuid}`, { observe: 'response' }).pipe(map( response=> response.body as Employee));
   }
 
+  getAllTasks(employeeUuid:string): Observable<ETask[]> {
+    return this.http.get(`http://localhost:8080/api/tasks/${employeeUuid}`, { observe: 'response' }).pipe(map( response=> response.body as ETask[]));
+  }
+
   deleteTask(uuid: string) {
-    return this.http.delete(`http://localhost:8080/api/employee/delete-task/${uuid}`).subscribe();
+    return this.http.delete(`http://localhost:8080/api/employee/delete-task/${uuid}`);
   }
 
   addTask(task: ETask, uuid:string) {
-    return this.http.put(`http://localhost:8080/api/employee/new-task/${uuid}`, task).subscribe();
+    return this.http.put(`http://localhost:8080/api/employee/new-task/${uuid}`, task ,{ observe: 'response' }).pipe(map( response=> response.body as ETask));
   }
 }
