@@ -1,8 +1,8 @@
 <div class="header">
-    <a [routerLink]="['/zaloguj']" class="header__link">
-        <button type="button" class="headerButton" class="header__link--button">Zaloguj się</button>
+    <a [routerLink]="['/zaloguj']" class="header">
+        <button type="button" class="headerButton">Zaloguj się</button>
     </a>
-    <a [routerLink]="['']">
-        <button type="button" class="headerButton">Wyloguj</button>
+    <a [routerLink]="['/']">
+        <button type="button" class="headerButton" (click)="logout()">Wyloguj</button>
     </a>
 </div>

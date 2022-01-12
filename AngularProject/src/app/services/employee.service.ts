@@ -30,7 +30,7 @@ export class EmployeeService {
   }
 
   getAllTasks(employeeUuid:string): Observable<ETask[]> {
-    return this.http.get(`http://localhost:8080/api/tasks/${employeeUuid}`, { observe: 'response' }).pipe(map( response=> response.body as ETask[]));
+    return this.http.get(`http://localhost:8080/api/employee/tasks/${employeeUuid}`, { observe: 'response' }).pipe(map( response=> response.body as ETask[]));
   }
 
   deleteTask(uuid: string) {

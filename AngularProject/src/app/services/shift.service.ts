@@ -19,6 +19,10 @@ export class ShiftService {
     return this.http.get(`http://localhost:8080/api/shifts`, { observe: 'response' }).pipe(map( response=> response.body as Shift[]));
   }
 
+  getShift(uuid:string): Observable<Shift> {
+    return this.http.get(`http://localhost:8080/api/shift/${uuid}`, { observe: 'response' }).pipe(map( response=> response.body as Shift));
+  }
+
   deleteShift(uuid: string) {
     return this.http.delete(`http://localhost:8080/api/shift/delete/${uuid}`);
   }

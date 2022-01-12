@@ -13,35 +13,38 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
+
 public class WorkplaceRestController {
 
     @Autowired
     private WorkplaceService workplaceService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/workplace/all")
     public List<WorkplaceDto> getList() {
         return workplaceService.getAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/workplace/positions")
     public List<String> getPositions() {
         return workplaceService.getPositions();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/api/workplace/new")
     public WorkplaceDto newWorkplace(
             @RequestBody WorkplaceForm workplace){
         return workplaceService.create(workplace);
 
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping(value = "/api/workplace/delete/{uuid}")
     public void deleteWorkplace(
             @PathVariable String uuid){
         workplaceService.delete(uuid);
     }
-
+    @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value = "/api/workplace/update/{uuid}")
     public void updateWorkplace(
             @PathVariable String uuid,

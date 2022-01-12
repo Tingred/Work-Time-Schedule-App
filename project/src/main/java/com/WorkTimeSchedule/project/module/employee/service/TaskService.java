@@ -36,7 +36,6 @@ public class TaskService {
     }
 
     public void deleteTask(String uuid) {
-        TaskEntity taskToDelete = taskRepository.findOneByUuid(uuid);
-        taskRepository.delete(taskToDelete);
+        taskRepository.delete(taskRepository.findOneByUuid(uuid));
     }
 }

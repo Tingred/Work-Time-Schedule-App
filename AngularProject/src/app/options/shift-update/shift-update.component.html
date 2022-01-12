@@ -1,0 +1,11 @@
+<div class="update-shift">
+    
+    <form [formGroup]="form">
+    <label>Zaktualizuj zmianę</label> 
+    <label for="start">Godzina startu:</label>
+    <input formControlName="startTime" type="text" placeholder="shift$.startTime">
+    <label for="finish">Godzina końca:</label>
+    <input formControlName="finishTime" type="text" placeholder="shift$.finishTime">
+    <button class="btt" (click)="updateShift()">Aktualizuj</button>
+    </form>
+</div>

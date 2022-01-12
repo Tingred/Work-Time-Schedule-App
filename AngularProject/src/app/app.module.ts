@@ -17,11 +17,12 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromFirmReducer from './store/firm/firm.reducer';
 import { FirmEffects } from './store/firm/firm.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ValueArrayPipe
+    ValueArrayPipe,
 
   ],
   imports: [
@@ -42,7 +43,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ReactiveFormsModule,
     StoreModule.forRoot({firm: fromFirmReducer.firmReducer}, {}),
     EffectsModule.forRoot([FirmEffects]),
-    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production })
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    NgxMaterialTimepickerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

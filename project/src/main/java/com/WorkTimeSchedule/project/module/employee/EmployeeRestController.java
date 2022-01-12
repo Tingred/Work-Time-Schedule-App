@@ -19,7 +19,6 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class EmployeeRestController {
 
     @Autowired
@@ -28,32 +27,38 @@ public class EmployeeRestController {
     @Autowired
     private TaskService taskService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/employee/{uuid}")
     public EmployeeDto getEmployeeByGuid(@PathVariable String uuid){
         return employeeService.getOneByUuid(uuid);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/employees")
     public List<EmployeeDto> getEmployees(){
         return employeeService.findAll();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/employee/by-position")
     public List<EmployeeDto> getEmployeesByPosition(
             @RequestParam String position){
         PositionEnum value = PositionEnum.valueOf(position);
         return employeeService.findAll(value);
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/employee/tasks/{uuid}")
     public List<TaskDto> getTasks(@PathVariable String uuid){
         return taskService.getAllEmployeeTasks(uuid);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/api/employee/new-task/{uuid}")
     public TaskDto addTask(@PathVariable String uuid,
                            @RequestBody TaskForm form){
         return taskService.addTask(uuid,form);
     }
+    @CrossOrigin(origins = "http://localhost:4200")
     @DeleteMapping(value = "/api/employee/delete-task/{uuid}")
     public void deleteTask(@PathVariable String uuid){
         taskService.deleteTask(uuid);

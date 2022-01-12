@@ -11,7 +11,13 @@
                     {{ shift.finishTime}}
                 </p> 
                 <div class="left"><button class="btt" (click)="delete( shift.uuid )">Usuń</button></div>
+                <a [routerLink]="['/zmiany/aktualizuj/'+ shift.uuid]">
+                    <div class="left">
+                        <button class="btt">Aktualizuj</button>
+                    </div>
+                </a> 
             </div>
+           
     </div>
 </div>
 

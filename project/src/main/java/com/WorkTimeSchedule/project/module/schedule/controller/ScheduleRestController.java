@@ -18,22 +18,24 @@ import java.time.LocalDate;
 import java.util.List;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 public class ScheduleRestController {
 
     @Autowired
     private ScheduleService scheduleService;
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/api/schedule/new")
     public void newSchedule(@RequestBody ScheduleForm form) {
         scheduleService.save(form);
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/schedule/load/all")
     public List<ScheduleDto> getAllSchedules(){
         return scheduleService.getAllSchedules();
     }
 
+    @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/schedule/load/byDate")
     public List<ScheduleDto> getAllSchedules(@RequestBody String date){
         return scheduleService.getAllByDate(LocalDate.parse(date));

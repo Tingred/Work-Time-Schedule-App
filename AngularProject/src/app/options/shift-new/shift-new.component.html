@@ -1,8 +1,11 @@
 <div class="new-shift">
+    
+    <form [formGroup]="form">
+    <label>Dodaj nową zmianę</label> 
     <label for="start">Godzina startu:</label>
-    <input formControlName="start" type="time">
+    <input formControlName="startTime" type="text" placeholder="HH:mm:ss">
     <label for="finish">Godzina końca:</label>
-    <input formControlName="finish" type="time">
-    <button class="btt" (click)="addShift(uuid)">Dodaj</button>
+    <input formControlName="finishTime" type="text" placeholder="HH:mm:ss">
+    <button class="btt" (click)="addShift()">Dodaj</button>
     </form>
 </div>

@@ -41,4 +41,8 @@ public class ShiftService {
         toUpdate.setFinishTime(Time.valueOf(form.getFinishTime()));
         return ShiftMapper.map(shiftRepository.saveAndFlush(toUpdate));
     }
+
+    public ShiftDto getShift(String uuid) {
+        return ShiftMapper.map(shiftRepository.findOneByUuid(uuid));
+    }
 }
