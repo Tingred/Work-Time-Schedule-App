@@ -1,17 +1,16 @@
 package com.WorkTimeSchedule.project.module.schedule.form;
-import com.sun.istack.NotNull;
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.Accessors;
 
+import java.util.List;
+
 @Getter
 @Setter
 @Accessors(chain = true)
-public class ShiftForm {
+public class WorkplaceScheduleForm {
 
-    @NotNull
-    private String startTime;
-    @NotNull
-    private String finishTime;
-
+    private String workplaceUuid;
+    private List<String> employeesUuids;
 }

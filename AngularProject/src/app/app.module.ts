@@ -14,10 +14,16 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { ValueArrayPipe } from './pipes/value-array.pipe';
 import { EffectsModule } from '@ngrx/effects';
+import * as fromOptionsReducer from './store/options/options.reducer';
 import * as fromFirmReducer from './store/firm/firm.reducer';
+import * as fromSchedulesReducer from './store/schedules/schedules.reducer';
 import { FirmEffects } from './store/firm/firm.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
+import { OptionsEffects } from './store/options/options.effect';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DateAdapter } from '@angular/material/core';
+import { SchedulesEffects } from './store/schedules/schedules.effect';
 
 @NgModule({
   declarations: [
@@ -41,9 +47,11 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
     LoginModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({firm: fromFirmReducer.firmReducer}, {}),
-    EffectsModule.forRoot([FirmEffects]),
+    StoreModule.forRoot({firm: fromFirmReducer.firmReducer, options: fromOptionsReducer.optionsReducer, schedules: fromSchedulesReducer.schedulesReducer}, {}),
+    EffectsModule.forRoot([FirmEffects, OptionsEffects,SchedulesEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
+    NgxMaterialTimepickerModule,
+    BrowserAnimationsModule,
     NgxMaterialTimepickerModule
   ],
   providers: [],

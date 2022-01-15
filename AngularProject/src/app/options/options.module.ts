@@ -17,7 +17,8 @@ import { ShiftUpdateComponent } from './shift-update/shift-update.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule,
+    RouterModule
+  
   ],
   exports: [
     ShiftsComponent,

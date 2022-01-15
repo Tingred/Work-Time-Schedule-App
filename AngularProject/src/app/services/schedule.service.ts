@@ -16,15 +16,22 @@ export class ScheduleService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<any> {
-    return this.http.get(`http://localhost:8080/api/schedule/load/all`, { observe: 'response' });
+  getAllSchedules(): Observable<Schedule[]> {
+    return this.http.get(`http://localhost:8080/api/schedule/get-all`, { observe: 'response' }).pipe(map( response=> response.body as Schedule[]));
+  }
+  getSchedule(date:string, shiftUuid:string): Observable<Schedule> {
+    return this.http.get(`http://localhost:8080/api/schedule/get/${date}/${shiftUuid}`, { observe: 'response' }).pipe(map( response=> response.body as Schedule));
   }
 
-  getByDate(date: string): Observable<any> {
-    return this.http.get(`http://localhost:8080/api/schedule/load/by-date`,date,{ observe: 'response' } );
+  deleteSchedule(shiftUuid: string,date:string) {
+    return this.http.delete(`http://localhost:8080/api/schedule/delete/${date}/${shiftUuid}`);
   }
 
-  addNew(schedule: Schedule) {
-    return this.http.post(`http://localhost:8080/api/schedule/new`, schedule, httpOptions);
+  updateSchedule(schedule: Schedule) {
+    return this.http.put(`http://localhost:8080/api/schedule/update`, schedule, { observe: 'response' }).pipe(map( response=> response.body as Schedule));
+  }
+
+  addSchedule(schedule: Schedule): Observable<Schedule> {
+    return this.http.post(`http://localhost:8080/api/schedule/new`, schedule,  { observe: 'response' }).pipe(map( response=> response.body as Schedule));
   }
 }

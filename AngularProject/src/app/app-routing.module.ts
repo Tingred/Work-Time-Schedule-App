@@ -7,9 +7,11 @@ import { SignInComponent } from './login/sign-in/sign-in.component';
 import { ScheduleMainComponent } from './schedule/schedule-main/schedule-main.component';
 import { ShiftsComponent } from './options/shifts/shifts.component';
 import { ShiftUpdateComponent } from './options/shift-update/shift-update.component';
+import { SingleScheduleComponent } from './schedule/single-schedule/single-schedule.component';
 
 const routes: Routes = [
   { path: 'harmonogram', component: ScheduleMainComponent},
+  { path: 'harmonogram/:date/:shiftUuid', component: SingleScheduleComponent},
   { path: 'zmiany', component: ShiftsComponent},
   { path: 'stanowiska', component: WorkplaceMainComponent},
   { path: 'pracownicy', component: EmployeeMainComponent},
@@ -18,6 +20,7 @@ const routes: Routes = [
   { path: 'zadania/:uuid', component: EmployeeTasksComponent},
   { path: 'zmiany/aktualizuj', component: ShiftUpdateComponent},
   { path: 'zmiany/aktualizuj/:uuid', component: ShiftUpdateComponent}
+
   
 ];
 

@@ -7,6 +7,7 @@ import com.WorkTimeSchedule.project.module.schedule.form.ShiftForm;
 import com.WorkTimeSchedule.project.module.schedule.service.ScheduleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,14 +31,28 @@ public class ScheduleRestController {
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(value = "/api/schedule/load/all")
+    @GetMapping(value = "/api/schedule/get-all")
     public List<ScheduleDto> getAllSchedules(){
         return scheduleService.getAllSchedules();
     }
 
     @CrossOrigin(origins = "http://localhost:4200")
-    @GetMapping(value = "/api/schedule/load/byDate")
-    public List<ScheduleDto> getAllSchedules(@RequestBody String date){
-        return scheduleService.getAllByDate(LocalDate.parse(date));
+    @GetMapping(value = "/api/schedule/get/{date}/{shiftUuid}")
+    public ScheduleDto getSchedule(@PathVariable String date,
+                                   @PathVariable String shiftUuid){
+        return scheduleService.getSchedule(date, shiftUuid);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @PutMapping(value = "/api/schedule/update")
+    public void updateSchedule(@RequestBody ScheduleForm form){
+        scheduleService.update(form);
+    }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @DeleteMapping(value = "/api/schedule/delete/{date}/{shiftUuid}")
+    public void deleteSchedule(@PathVariable String date,
+                               @PathVariable String shiftUuid){
+        scheduleService.delete(date,shiftUuid);
     }
 }

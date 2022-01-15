@@ -1,9 +1,15 @@
 <div class="new-task">
     <form [formGroup]="form">
-        <my-date-picker name="mydate" [options]="myDatePickerOptions"
-                    formControlName="myDate"></my-date-picker>
-    <label for="text">Dodaj nowe zadanie:</label>
-    <input formControlName="text" type="text" placeholder="Podaj treść zadania">
+        <mat-form-field appearance="fill" >
+            <mat-label>Wybierz datę</mat-label>
+            <input matInput [matDatepicker]="picker"  formControlName="date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field appearance="fill" >
+            <mat-label>Dodaj nowe zadanie:</mat-label>
+            <input matInput  formControlName="text">
+          </mat-form-field>
     <button class="btt" (click)="addTask(uuid)">Dodaj</button>
     </form>
 </div>

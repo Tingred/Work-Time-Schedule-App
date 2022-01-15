@@ -57,31 +57,5 @@ VALUES ('08:00:00','15:00:00','e83c5cb3-1abb-444a-b21c-748587cf3e53');
 INSERT INTO shift(start_time,finish_time,uuid)
 VALUES ('15:30:00','21:00:00','049dd503-1b8f-45a0-8a27-14f22a2a0e5b');
 
--- grafik
 
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-07','ecf34377-1872-4406-9f53-408a5d5ed995','42e5fc87-03c9-4fae-8867-54735eeca054',1);
-
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-07','dcf34277-1872-4406-9f53-408a5d5ed995','fa4993b3-2817-4905-915f-b039594816f7',1);
-
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-07','dcf34277-1872-4406-9f53-408a5d5ed995','130dd892-6fb7-11ec-90d6-0242ac120003',2);
-
-INSERT INTO schedule(schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-07','bcf38377-1872-4406-9f53-408a5d5ed995','199c1034-6fb7-11ec-90d6-0242ac120003',2);
-
--- grafik druga data
-
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-08','ecf34377-1872-4406-9f53-408a5d5ed995','42e5fc87-03c9-4fae-8867-54735eeca054',1);
-
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-08','dcf34277-1872-4406-9f53-408a5d5ed995','fa4993b3-2817-4905-915f-b039594816f7',1);
-
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-08','dcf34277-1872-4406-9f53-408a5d5ed995','130dd892-6fb7-11ec-90d6-0242ac120003',2);
-
-INSERT INTO schedule (schedule_date,workplace_uuid,employee_uuid,shift_id)
-VALUES ('2022-01-08','bcf38377-1872-4406-9f53-408a5d5ed995','199c1034-6fb7-11ec-90d6-0242ac120003',2);
 

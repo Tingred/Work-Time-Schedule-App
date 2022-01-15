@@ -38,6 +38,6 @@ export class EmployeeService {
   }
 
   addTask(task: ETask, uuid:string) {
-    return this.http.put(`http://localhost:8080/api/employee/new-task/${uuid}`, task ,{ observe: 'response' }).pipe(map( response=> response.body as ETask));
+    return this.http.post(`http://localhost:8080/api/employee/new-task/${uuid}`, task ,{ observe: 'response' }).pipe(map( response=> response.body as ETask));
   }
 }

@@ -8,8 +8,22 @@ import { ValueArrayPipe } from '../pipes/value-array.pipe';
 import { EmployeeTasksComponent } from './employee/employee-tasks/employee-tasks.component';
 import { RouterModule } from '@angular/router';
 import { EmployeeTaskNewComponent } from './employee/employee-task-new/employee-task-new.component';
-import { MyDatePickerModule } from 'mydatepicker';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import {MatInputModule} from '@angular/material/input';
+import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
+import { MomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
 
+ export const DateFormats = {
+            parse: {
+                dateInput: ['YYYY-MM-DD']
+            },
+            display: {
+                dateInput: 'YYYY-MM-DD',
+                monthYearLabel: 'MMM YYYY',
+                dateA11yLabel: 'LL',
+                monthYearA11yLabel: 'MMMM YYYY',
+            },
+        };
 
 
 
@@ -25,7 +39,9 @@ import { MyDatePickerModule } from 'mydatepicker';
     CommonModule,
     ReactiveFormsModule,
     RouterModule,
-    MyDatePickerModule
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
   ],
   exports: [
     WorkplaceMainComponent,
@@ -33,6 +49,14 @@ import { MyDatePickerModule } from 'mydatepicker';
     WorkplaceNewComponent,
     EmployeeTaskNewComponent,
     EmployeeTasksComponent
-  ]
+  ], providers: [
+
+    { provide: DateAdapter, useClass: MomentDateAdapter, deps: [MAT_DATE_LOCALE] },
+      { provide: MAT_DATE_FORMATS, useValue: DateFormats },
+      {provide: MAT_MOMENT_DATE_ADAPTER_OPTIONS, useValue: {strict: true}}
+
+
+  ],
 })
+
 export class FirmModule { }

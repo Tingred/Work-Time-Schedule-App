@@ -24,12 +24,14 @@ export class EmployeeTasksComponent implements OnInit {
     private store$: Store<AppState>) { }
 
     ngOnInit(){
-      this.router.params.subscribe(res => 
-      this.store$.dispatch(fromActions.getAllTasks({uuid: res.uuid as string})));
+      this.router.params.subscribe(res => {
+      this.store$.dispatch(fromActions.getAllTasks({uuid: res.uuid as string}))
+      this.employeeUuid = res.uuid
+  });
   }
       
 
   delete(uuid: string | undefined) {
-    this.store$.dispatch(fromActions.deleteWorkplace({ uuid: uuid as string }));
+    this.store$.dispatch(fromActions.deleteTask({ uuid: uuid as string }));
   }
 }

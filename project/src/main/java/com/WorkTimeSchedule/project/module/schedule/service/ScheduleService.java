@@ -1,20 +1,23 @@
 package com.WorkTimeSchedule.project.module.schedule.service;
 
+import com.WorkTimeSchedule.project.module.employee.mapper.EmployeeMapper;
+import com.WorkTimeSchedule.project.module.employee.repository.EmployeeRepository;
+import com.WorkTimeSchedule.project.module.schedule.dto.WorkplaceScheduleDto;
 import com.WorkTimeSchedule.project.module.schedule.entity.ScheduleEntity;
-import com.WorkTimeSchedule.project.module.schedule.entity.ShiftEntity;
+import com.WorkTimeSchedule.project.module.schedule.entity.WorkplaceScheduleEntity;
 import com.WorkTimeSchedule.project.module.schedule.form.ScheduleForm;
-import com.WorkTimeSchedule.project.module.schedule.form.ShiftForm;
-import com.WorkTimeSchedule.project.module.schedule.mapper.ScheduleMapper;
 import com.WorkTimeSchedule.project.module.schedule.dto.ScheduleDto;
-import com.WorkTimeSchedule.project.module.schedule.dto.ShiftDto;
 import com.WorkTimeSchedule.project.module.schedule.mapper.ShiftMapper;
 import com.WorkTimeSchedule.project.module.schedule.repository.ScheduleRepository;
 import com.WorkTimeSchedule.project.module.schedule.repository.ShiftRepository;
+import com.WorkTimeSchedule.project.module.schedule.repository.WorkplaceScheduleRepository;
+import com.WorkTimeSchedule.project.module.workplace.WorkplaceMapper;
+import com.WorkTimeSchedule.project.module.workplace.WorkplaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.sql.Time;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -27,25 +30,82 @@ public class ScheduleService {
     @Autowired
     private ShiftRepository shiftRepository;
 
-    public void save(ScheduleForm form) {
-        //TODO SAVE
-    }
+    @Autowired
+    private WorkplaceScheduleRepository workplaceScheduleRepository;
+
+    @Autowired
+    private WorkplaceRepository workplaceRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
 
     public List<ScheduleDto> getAllSchedules() {
+
+        // TODO PRZEANALIZOWAC TO JESZCZE RAZ
         List<ScheduleEntity> schedules = scheduleRepository.findAll();
-        return  schedules.stream()
-                .map(s -> ScheduleMapper
-                        .map(s,shiftRepository.findOneById(
-                                s.getShift().getId())))
+
+        return schedules.stream().map(s -> new ScheduleDto()
+                .setShift(ShiftMapper.map(s.getShift()))
+                .setDate(s.getScheduleDate().toString())
+                .setWorkplaces(mapScheduleWorkplaces(s.getId())))
                 .collect(Collectors.toList());
+    }
+    public ScheduleDto getSchedule(String date, String shiftUuid) {
+        ScheduleEntity entity = scheduleRepository.findOneByScheduleDateAndShift(
+                LocalDate.parse(date),shiftRepository.findOneByUuid(shiftUuid));
+
+        List<WorkplaceScheduleDto> workplaces = mapScheduleWorkplaces(entity.getId());
+        return mapScheduleToDto(entity,workplaces);
+    }
+    public ScheduleDto save(ScheduleForm form) {
+
+        List<WorkplaceScheduleEntity> workplaces = getScheduleWorkplaces(form);
+
+        ScheduleEntity  entity = new ScheduleEntity()
+                .setScheduleDate(LocalDate.parse(form.getDate()))
+                .setShift(shiftRepository.findOneByUuid(form.getShiftUuid()))
+                .setWorkplaces(workplaces);
+        
+        return mapScheduleToDto(scheduleRepository.saveAndFlush(entity),mapScheduleWorkplaces(entity.getId()));
+
+    }
+    public ScheduleDto update(ScheduleForm form) {
+
+        List<WorkplaceScheduleEntity> workplaces = getScheduleWorkplaces(form);
+
+        ScheduleEntity  entity = scheduleRepository.findOneByScheduleDateAndShift(LocalDate.parse(form.getDate()),shiftRepository.findOneByUuid(form.getShiftUuid()))
+                .setScheduleDate(LocalDate.parse(form.getDate()))
+                .setShift(shiftRepository.findOneByUuid(form.getShiftUuid()))
+                .setWorkplaces(workplaces);
+
+        return mapScheduleToDto(scheduleRepository.saveAndFlush(entity),mapScheduleWorkplaces(entity.getId()));
+    }
+    public void delete(String date, String shiftUuid){
+        scheduleRepository.delete(scheduleRepository.findOneByScheduleDateAndShift(LocalDate.parse(date),shiftRepository.findOneByUuid(shiftUuid)));
     }
 
-    public List<ScheduleDto> getAllByDate(LocalDate date) {
-        List<ScheduleEntity> schedules = scheduleRepository.findAllByScheduleDate(date);
-        return schedules.stream()
-                .map(s -> ScheduleMapper
-                        .map(s,shiftRepository.findOneById(
-                                s.getShift().getId())))
+    public List<WorkplaceScheduleEntity> getScheduleWorkplaces(ScheduleForm form){
+        return form.getWorkplaces().stream()
+                .map(w -> new WorkplaceScheduleEntity()
+                        .setWorkplaceUuid(w.getWorkplaceUuid())
+                        .setEmployeesUuids(w.getEmployeesUuids()))
                 .collect(Collectors.toList());
     }
+    public List<WorkplaceScheduleDto> mapScheduleWorkplaces(Long scheduleId){
+        return workplaceScheduleRepository.findAllByScheduleId(scheduleId)
+                .stream().map(w -> new WorkplaceScheduleDto()
+                        .setWorkplace(WorkplaceMapper.map(workplaceRepository.findOneByUuid(w.getWorkplaceUuid())))
+                        .setEmployees(EmployeeMapper.map(w.getEmployeesUuids()
+                                .stream().map(u -> employeeRepository.findOneByUuid(u))
+                                .collect(Collectors.toList()))))
+                .collect(Collectors.toList());
+    }
+    public ScheduleDto mapScheduleToDto(ScheduleEntity entity, List<WorkplaceScheduleDto> workplaces){
+        return new ScheduleDto()
+                .setDate(entity.getScheduleDate().toString())
+                .setShift(ShiftMapper.map(entity.getShift()))
+                .setWorkplaces(workplaces);
+    }
+
 }

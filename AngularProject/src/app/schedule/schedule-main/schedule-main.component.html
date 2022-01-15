@@ -1,1 +1,19 @@
-<p>Tu będzie harmonogram</p>
+<mat-card class="demo-inline-calendar-card">
+    <mat-calendar [(selected)]="selected"></mat-calendar>
+  </mat-card>
+  <div class="view">
+    <div *ngIf="(shifts$ | async) as shifts">
+        <div class="a-shift" *ngFor="let shift of shifts">
+            <p><strong>Początek:</strong>
+                <br/>
+                {{ shift.startTime }}
+            </p>
+            <p><strong>Koniec:</strong>
+                <br/>
+                {{ shift.finishTime}}
+            </p> 
+            <a [routerLink]="['/harmonogram/'+ parsedDate + '/' + shift.uuid]">
+                <button class="btt">Wybierz</button>
+            </a> 
+        </div>
+</div>

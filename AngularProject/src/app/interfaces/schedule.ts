@@ -1,7 +1,9 @@
+import { Shift } from "./shift";
+import { WorkplaceSchedule } from "./workplace-shedule-form";
+
 export interface Schedule {
     date: string;
-    startTime: string;
-    finishTime: string;
-    workplaceUuid: string;
-    employeeUuid: string;
+    shift?: Shift;
+    shiftUuid?: string;
+    workplaces: Array<WorkplaceSchedule>
 }

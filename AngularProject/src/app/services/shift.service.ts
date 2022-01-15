@@ -28,7 +28,7 @@ export class ShiftService {
   }
 
   updateShift(shift:Shift, uuid:string) {
-    return this.http.put(`http://localhost:8080/api/shift/delete/${uuid}`, shift, { observe: 'response' }).pipe(map( response=> response.body as Shift));
+    return this.http.put(`http://localhost:8080/api/shift/update/${uuid}`, shift, { observe: 'response' }).pipe(map( response=> response.body as Shift));
   }
 
   addShift(shift:Shift): Observable<Shift> {
