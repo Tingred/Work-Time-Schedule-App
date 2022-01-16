@@ -24,11 +24,15 @@ import { OptionsEffects } from './store/options/options.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateAdapter } from '@angular/material/core';
 import { SchedulesEffects } from './store/schedules/schedules.effect';
+import { UserViewComponent } from './user/user-view/user-view.component';
+import { authInterceptorProviders } from './security/_helpers/auth.interceptor';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     ValueArrayPipe,
+    UserViewComponent,
 
   ],
   imports: [
@@ -52,9 +56,10 @@ import { SchedulesEffects } from './store/schedules/schedules.effect';
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     NgxMaterialTimepickerModule,
     BrowserAnimationsModule,
-    NgxMaterialTimepickerModule
+    NgxMaterialTimepickerModule,
+
   ],
-  providers: [],
+  providers: [authInterceptorProviders],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

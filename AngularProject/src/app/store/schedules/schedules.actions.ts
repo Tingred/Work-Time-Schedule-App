@@ -14,6 +14,20 @@ export const getAllSchedulesFailure = createAction(
     '[SCHEDULES] Get all schedules failure',
     props<{ message: string }>()
 );
+export const getAllEmployeeSchedules = createAction(
+    '[SCHEDULES] Get all employee schedules',
+    props<{ employeeUuid: string }>()
+);
+
+export const getAllEmployeeSchedulesSuccess = createAction(
+    '[SCHEDULES] Get all employee schedules success',
+    props<{  employeeSchedules: Array<Schedule> }>()
+);
+
+export const getAllEmployeeSchedulesFailure = createAction(
+    '[SCHEDULES] Get all employee schedules failure',
+    props<{ message: string }>()
+);
 
 export const getSchedule = createAction(
     '[SCHEDULES] Get schedule',
@@ -29,6 +43,7 @@ export const getScheduleFailure = createAction(
     '[SCHEDULES] Get schedule failure',
     props<{ message: string }>()
 );
+
 
 export const deleteSchedule = createAction(
     '[SCHEDULES] Delete schedule',

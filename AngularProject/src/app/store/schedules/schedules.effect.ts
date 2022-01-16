@@ -19,6 +19,15 @@ export class SchedulesEffects {
             ))
         ), { dispatch: true }
     );
+    public getAllEmployeeSchedules$ = createEffect(() =>
+        this.actions$.pipe(
+            ofType(fromActions.getAllEmployeeSchedules),
+            switchMap(({employeeUuid}) => this.scheduleService.getAllEmployeeSchedules(employeeUuid).pipe(
+                map((body) => fromActions.getAllEmployeeSchedulesSuccess({ employeeSchedules: body })),
+                catchError((message) => of(fromActions.getAllEmployeeSchedulesFailure({ message })))
+            ))
+        ), { dispatch: true }
+    );
     public getSchedule$ = createEffect(() =>
     this.actions$.pipe(
       ofType(fromActions.getSchedule),

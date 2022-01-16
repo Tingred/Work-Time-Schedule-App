@@ -19,7 +19,8 @@ const routes: Routes = [
   { path: 'zadania', component: EmployeeTasksComponent},
   { path: 'zadania/:uuid', component: EmployeeTasksComponent},
   { path: 'zmiany/aktualizuj', component: ShiftUpdateComponent},
-  { path: 'zmiany/aktualizuj/:uuid', component: ShiftUpdateComponent}
+  { path: 'zmiany/aktualizuj/:uuid', component: ShiftUpdateComponent},
+  { path: '', redirectTo: 'zaloguj', pathMatch: 'full' }
 
   
 ];

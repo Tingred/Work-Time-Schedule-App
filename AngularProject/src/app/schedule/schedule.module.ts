@@ -7,6 +7,9 @@ import { OptionsModule } from '../options/options.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { SingleScheduleComponent } from './single-schedule/single-schedule.component';
+import {MatInputModule} from '@angular/material/input';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 
 
@@ -21,7 +24,10 @@ import { SingleScheduleComponent } from './single-schedule/single-schedule.compo
     MatCardModule,
     OptionsModule,
     ReactiveFormsModule,
-    RouterModule
+    RouterModule,
+    MatCheckboxModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   exports: [
     ScheduleMainComponent

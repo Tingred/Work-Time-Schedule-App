@@ -12,5 +12,8 @@ public interface ScheduleRepository extends JpaRepository<ScheduleEntity, Long>,
 
     List<ScheduleEntity> findAll();
 
+    ScheduleEntity findOneById(Long id);
+
     ScheduleEntity findOneByScheduleDateAndShift(LocalDate date, ShiftEntity shift);
+
 }

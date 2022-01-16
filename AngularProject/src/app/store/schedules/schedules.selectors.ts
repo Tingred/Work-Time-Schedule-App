@@ -10,6 +10,10 @@ export const selectState = createSelector(
     selectState,
     fromReducer.getSchedules
   )
+  export const selectEmployeeSchedules = createSelector(
+    selectState,
+    fromReducer.getEmployeeSchedules
+  )
 
   export const selectSchedule = createSelector(
     selectState,

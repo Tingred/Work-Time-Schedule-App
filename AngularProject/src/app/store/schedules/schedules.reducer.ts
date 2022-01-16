@@ -4,11 +4,13 @@ import { AppState } from 'src/app/interfaces/store';
 import * as fromActions from './schedules.actions';
 
 export interface SchedulesState {
+    employeeSchedules: Array<Schedule>;
     schedules: Array<Schedule>;
     schedule: Schedule;
 }
 
 export const initialState: SchedulesState = {
+    employeeSchedules: [],
     schedules: [],
     schedule: {} as Schedule
 };
@@ -18,6 +20,10 @@ const _schedulesReducer = createReducer(
     on(fromActions.getAllSchedulesSuccess, (state, {schedules}) => ({
         ...state,
         schedules
+    })),
+    on(fromActions.getAllEmployeeSchedulesSuccess, (state, {employeeSchedules}) => ({
+        ...state,
+        employeeSchedules
     })),
     on(fromActions.getScheduleSuccess, (state, {schedule}) => ({
         ...state,
@@ -50,5 +56,6 @@ export function schedulesReducer(state: SchedulesState | undefined, action: Acti
 
 export const selectState = (state: AppState) => state.schedules;
 export const getSchedules = (state: SchedulesState) =>state.schedules;
+export const getEmployeeSchedules = (state: SchedulesState) =>state.employeeSchedules;
 export const getSchedule = (state: SchedulesState) =>state.schedule;
 

@@ -22,6 +22,9 @@ export class ScheduleService {
   getSchedule(date:string, shiftUuid:string): Observable<Schedule> {
     return this.http.get(`http://localhost:8080/api/schedule/get/${date}/${shiftUuid}`, { observe: 'response' }).pipe(map( response=> response.body as Schedule));
   }
+  getAllEmployeeSchedules(employeeUuid: string):Observable<Schedule[]> {
+    return this.http.get(`http://localhost:8080/api/schedule/get-all/${employeeUuid}`, { observe: 'response' }).pipe(map( response=> response.body as Schedule[]));
+  }
 
   deleteSchedule(shiftUuid: string,date:string) {
     return this.http.delete(`http://localhost:8080/api/schedule/delete/${date}/${shiftUuid}`);

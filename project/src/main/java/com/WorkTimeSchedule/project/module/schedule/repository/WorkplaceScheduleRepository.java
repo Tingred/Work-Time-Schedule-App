@@ -12,4 +12,6 @@ import java.util.List;
 public interface WorkplaceScheduleRepository extends JpaRepository<WorkplaceScheduleEntity, Long>, JpaSpecificationExecutor<WorkplaceScheduleEntity> {
 
     List<WorkplaceScheduleEntity> findAllByScheduleId(Long id);
+
+    WorkplaceScheduleEntity findOneByEmployeesUuidsAndSchedule(String uuid,Long scheduleId);
 }

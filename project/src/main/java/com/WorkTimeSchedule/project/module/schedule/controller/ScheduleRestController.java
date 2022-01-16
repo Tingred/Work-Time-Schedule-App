@@ -42,6 +42,11 @@ public class ScheduleRestController {
                                    @PathVariable String shiftUuid){
         return scheduleService.getSchedule(date, shiftUuid);
     }
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/api/schedule/get-all/{employeeUuid}")
+    public List<ScheduleDto> getEmployeeSchedules(@PathVariable String employeeUuid){
+        return scheduleService.getAllEmployeeSchedules(employeeUuid);
+    }
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value = "/api/schedule/update")
