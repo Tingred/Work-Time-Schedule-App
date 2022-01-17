@@ -13,7 +13,7 @@ import { waitForAsync } from '@angular/core/testing';
 @Component({
   selector: 'app-employee-tasks',
   templateUrl: './employee-tasks.component.html',
-  styleUrls: ['./employee-tasks.component.css']
+  styleUrls: ['./employee-tasks.component.scss']
 })
 export class EmployeeTasksComponent implements OnInit {
 

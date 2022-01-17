@@ -10,7 +10,7 @@ import { select, Store } from '@ngrx/store';
 @Component({
   selector: 'app-employee-main',
   templateUrl: './employee-main.component.html',
-  styleUrls: ['./employee-main.component.css']
+  styleUrls: ['./employee-main.component.scss']
 })
 export class EmployeeMainComponent implements OnInit {
 

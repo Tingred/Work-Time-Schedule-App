@@ -13,7 +13,7 @@ import { Shift } from 'src/app/interfaces/shift';
 @Component({
   selector: 'app-shift-update',
   templateUrl: './shift-update.component.html',
-  styleUrls: ['./shift-update.component.css']
+  styleUrls: ['./shift-update.component.scss']
 })
 export class ShiftUpdateComponent implements OnInit {
 

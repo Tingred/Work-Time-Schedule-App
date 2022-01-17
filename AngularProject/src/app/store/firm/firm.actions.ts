@@ -61,6 +61,20 @@ export const getAllEmployeesFailure = createAction(
     '[EMPLOYEE] Get all employees failure',
     props<{ message: string }>()
 );
+export const getEmployee = createAction(
+    '[EMPLOYEE] Get employee',
+    props<{ id: number }>()
+);
+
+export const getEmployeeSuccess = createAction(
+    '[EMPLOYEE] Get employee success',
+    props<{ employee: Employee }>()
+);
+
+export const getEmployeeFailure = createAction(
+    '[EMPLOYEE] Get employee failure',
+    props<{ message: string }>()
+);
 /* Tasks  */
 export const getAllTasks = createAction(
     '[TASK] Get all tasks',

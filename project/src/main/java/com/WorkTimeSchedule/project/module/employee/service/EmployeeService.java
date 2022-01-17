@@ -30,6 +30,11 @@ public class EmployeeService {
         EmployeeEntity entity = employeeRepository.findOneByUuid(uuid);
         return EmployeeMapper.map(entity);
     }
+    public EmployeeDto getOneByUserId(Long id) {
+        EmployeeEntity entity = employeeRepository.findOneByUserId(id);
+        return EmployeeMapper.map(entity);
+    }
+
 
     public List<EmployeeDto> findAll() {
         return EmployeeMapper

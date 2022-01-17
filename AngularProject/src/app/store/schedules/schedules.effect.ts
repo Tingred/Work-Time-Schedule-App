@@ -2,9 +2,11 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { of } from 'rxjs';
-import { map, mergeMap, catchError, tap, switchMap } from 'rxjs/operators';
+import { map, mergeMap, catchError, tap, switchMap, withLatestFrom, first } from 'rxjs/operators';
 import { ScheduleService } from 'src/app/services/schedule.service';
 import * as fromActions from './schedules.actions';
+import * as fromSelectorsFirm from '../../store/firm/firm.selectors';
+import { AppState } from 'src/app/interfaces/store';
 
 
 @Injectable()
@@ -22,7 +24,7 @@ export class SchedulesEffects {
     public getAllEmployeeSchedules$ = createEffect(() =>
         this.actions$.pipe(
             ofType(fromActions.getAllEmployeeSchedules),
-            switchMap(({employeeUuid}) => this.scheduleService.getAllEmployeeSchedules(employeeUuid).pipe(
+            switchMap(({employeeUuid})=> this.scheduleService.getAllEmployeeSchedules(employeeUuid).pipe(
                 map((body) => fromActions.getAllEmployeeSchedulesSuccess({ employeeSchedules: body })),
                 catchError((message) => of(fromActions.getAllEmployeeSchedulesFailure({ message })))
             ))

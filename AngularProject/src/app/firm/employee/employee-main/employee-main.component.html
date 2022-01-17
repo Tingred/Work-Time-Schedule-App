@@ -1,20 +1,26 @@
 <div class="view">
-    <div *ngIf="(employees$ | async) as employees">
-        <div class="a-employee" *ngFor="let employee of employees">
-            <p>
-                <strong>Imię i nazwisko:</strong>
-                <br/>
-                {{ employee.name }} {{ employee.surname }}
-            </p>
-            <p>
-                <strong>Uprawnienia:</strong>
-                <br/>
-                {{ employee.position }}
-            </p>
-            <a [routerLink]="['/zadania/'+ employee.uuid]">
-                <div class="left">
-                    <button class="btt">Zadania</button>
+    <ng-container *ngIf="(employees$ | async) as employees">
+        <div class="employee" *ngFor="let employee of employees">
+            <div class="employee__info">
+                <mat-icon class="employee__icon">engineering</mat-icon>
+                <div class="employee__data">
+                    <p class="employee__data--label">
+                        <strong >Imię i nazwisko:</strong>
+                    </p>
+                    <p class="employee__data--value">
+                        <span [matTooltip]="employee.name + ' ' + employee.surname">{{ employee.name }} {{ employee.surname }}</span>
+                    </p>
+                    <p class="employee__data--label">
+                        <strong>Uprawnienia:</strong>
+                    </p>
+                    <p class="employee__data--value">
+                        <span [matTooltip]="employee.position">{{employee.position}}</span>
+                    </p>
                 </div>
-            </a> 
+            </div>
+            <button class="employee__tasks" [routerLink]="['/zadania/'+ employee.uuid]">
+                Zadania
+            </button> 
         </div>
+    </ng-container>
 </div>

@@ -29,9 +29,16 @@ public class EmployeeRestController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/employee/{uuid}")
-    public EmployeeDto getEmployeeByGuid(@PathVariable String uuid){
+    public EmployeeDto getEmployeeByUuid(@PathVariable String uuid){
         return employeeService.getOneByUuid(uuid);
     }
+
+    @CrossOrigin(origins = "http://localhost:4200")
+    @GetMapping(value = "/api/employee/by-user-id/{id}")
+    public EmployeeDto getEmployeeByUserId(@PathVariable Long id){
+        return employeeService.getOneByUserId(id);
+    }
+
 
     @CrossOrigin(origins = "http://localhost:4200")
     @GetMapping(value = "/api/employees")

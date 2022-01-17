@@ -1,14 +1,14 @@
-<div class="adminHeaderB">
-    <a [routerLink]="['/harmonogram']">
-        <button type="button" class="headerButton">Harmonogram</button>
-    </a>
-    <a [routerLink]="['/stanowiska']">
-        <button type="button" class="headerButton">Stanowiska</button>
-    </a>
-    <a [routerLink]="['/pracownicy']">
-        <button type="button" class="headerButton">Pracownicy</button>
-    </a>
-    <a [routerLink]="['/zmiany']">
-        <button type="button" class="headerButton">Zmiany</button>
-    </a>
+<div class="header" *ngIf="isAdmin(roles$ | async)">
+    <button class="header__link" [routerLink]="['/harmonogram']" routerLinkActive="active">
+        <span class="header__link--text">Harmonogram</span>
+    </button>
+    <button class="header__link" [routerLink]="['/stanowiska']" routerLinkActive="active">
+        <span class="header__link--text">Stanowiska</span>
+    </button>
+    <button class="header__link" [routerLink]="['/pracownicy']" routerLinkActive="active">
+        <span class="header__link--text">Pracownicy</span>
+    </button>
+    <button class="header__link" [routerLink]="['/zmiany']" routerLinkActive="active">
+        <span class="header__link--text">Zmiany</span>
+    </button>
 </div>

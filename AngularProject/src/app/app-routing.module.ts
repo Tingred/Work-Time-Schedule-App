@@ -8,6 +8,7 @@ import { ScheduleMainComponent } from './schedule/schedule-main/schedule-main.co
 import { ShiftsComponent } from './options/shifts/shifts.component';
 import { ShiftUpdateComponent } from './options/shift-update/shift-update.component';
 import { SingleScheduleComponent } from './schedule/single-schedule/single-schedule.component';
+import { UserViewComponent } from './user/user-view/user-view.component';
 
 const routes: Routes = [
   { path: 'harmonogram', component: ScheduleMainComponent},
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'zadania/:uuid', component: EmployeeTasksComponent},
   { path: 'zmiany/aktualizuj', component: ShiftUpdateComponent},
   { path: 'zmiany/aktualizuj/:uuid', component: ShiftUpdateComponent},
+  { path: 'user', component: UserViewComponent},
   { path: '', redirectTo: 'zaloguj', pathMatch: 'full' }
 
   

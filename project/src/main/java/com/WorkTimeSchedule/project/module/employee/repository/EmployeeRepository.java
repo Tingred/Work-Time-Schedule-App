@@ -13,6 +13,8 @@ public interface EmployeeRepository extends JpaRepository<EmployeeEntity, Long>,
 
     EmployeeEntity findOneByUuid(String uuid);
 
+    EmployeeEntity findOneByUserId(Long id);
+
     List<EmployeeEntity> findAll();
 
     List<EmployeeEntity> findAllByPosition(PositionEnum position);

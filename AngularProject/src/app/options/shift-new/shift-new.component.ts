@@ -8,7 +8,7 @@ import * as fromActions from '../../store/options/options.actions'
 @Component({
   selector: 'app-shift-new',
   templateUrl: './shift-new.component.html',
-  styleUrls: ['./shift-new.component.css']
+  styleUrls: ['./shift-new.component.scss']
 })
 export class ShiftNewComponent implements OnInit {
 

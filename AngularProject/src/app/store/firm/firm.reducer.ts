@@ -9,12 +9,14 @@ export interface FirmState {
     workplaces: Array<Workplace>;
     employees: Array<Employee>;
     tasks: Array<ETask>;
+    employee: Employee;
 }
 
 export const initialState: FirmState = {
     workplaces: [],
     employees: [],
     tasks: [],
+    employee: {} as Employee
 };
 
 
@@ -38,6 +40,10 @@ const _firmReducer = createReducer(
     on(fromActions.getAllEmployeesSuccess, (state, {employees}) => ({
         ...state,
         employees
+    })),
+    on(fromActions.getEmployeeSuccess, (state, {employee}) => ({
+        ...state,
+        employee
     })),
     on(fromActions.getAllTasksSuccess, (state, {tasks}) => ({
         ...state,
@@ -64,3 +70,4 @@ export const selectState = (state: AppState) => state.firm;
 export const getWorkplaces = (state: FirmState) => state.workplaces;
 export const getEmployees = (state: FirmState) => state.employees;
 export const getTasks = (state: FirmState) => state.tasks;
+export const getEmployee = (state: FirmState) => state.employee;

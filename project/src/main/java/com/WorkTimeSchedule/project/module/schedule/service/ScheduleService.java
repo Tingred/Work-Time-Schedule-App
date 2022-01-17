@@ -80,38 +80,37 @@ public class ScheduleService {
 
     public ScheduleDto save(ScheduleForm form) {
 
-        List<WorkplaceScheduleEntity> workplaces = getScheduleWorkplaces(form);
-
-        ScheduleEntity  entity = new ScheduleEntity()
+        ScheduleEntity schedule = new ScheduleEntity()
                 .setScheduleDate(LocalDate.parse(form.getDate()))
-                .setShift(shiftRepository.findOneByUuid(form.getShiftUuid()))
-                .setWorkplaces(workplaces);
+                .setShift(shiftRepository.findOneByUuid(form.getShiftUuid()));
 
-        return mapScheduleToDto(scheduleRepository.saveAndFlush(entity),mapScheduleWorkplaces(entity.getId()));
+        List<WorkplaceScheduleEntity> workplaceScheduleEntities = form.getWorkplaces().stream()
+                .map(w -> new WorkplaceScheduleEntity()
+                        .setWorkplaceUuid(w.getWorkplaceUuid())
+                        .setEmployeesUuids(w.getEmployeeUuids())
+                        .setSchedule(schedule)).collect(Collectors.toList());
+        schedule.setWorkplaces(workplaceScheduleEntities);
+        scheduleRepository.saveAndFlush(schedule);
+        return mapScheduleToDto(schedule,mapScheduleWorkplaces(schedule.getId()));
 
     }
     public ScheduleDto update(ScheduleForm form) {
 
-        List<WorkplaceScheduleEntity> workplaces = getScheduleWorkplaces(form);
-
         ScheduleEntity  entity = scheduleRepository.findOneByScheduleDateAndShift(LocalDate.parse(form.getDate()),shiftRepository.findOneByUuid(form.getShiftUuid()))
                 .setScheduleDate(LocalDate.parse(form.getDate()))
-                .setShift(shiftRepository.findOneByUuid(form.getShiftUuid()))
-                .setWorkplaces(workplaces);
-
-        return mapScheduleToDto(scheduleRepository.saveAndFlush(entity),mapScheduleWorkplaces(entity.getId()));
+                .setShift(shiftRepository.findOneByUuid(form.getShiftUuid()));
+        List<WorkplaceScheduleEntity> workplaceScheduleEntities = form.getWorkplaces().stream()
+                .map(w -> new WorkplaceScheduleEntity()
+                        .setWorkplaceUuid(w.getWorkplaceUuid())
+                        .setEmployeesUuids(w.getEmployeeUuids())
+                        .setSchedule(entity)).collect(Collectors.toList());
+                entity.setWorkplaces(workplaceScheduleEntities);
+        return mapScheduleToDto(entity,mapScheduleWorkplaces(entity.getId()));
     }
     public void delete(String date, String shiftUuid){
         scheduleRepository.delete(scheduleRepository.findOneByScheduleDateAndShift(LocalDate.parse(date),shiftRepository.findOneByUuid(shiftUuid)));
     }
 
-    public List<WorkplaceScheduleEntity> getScheduleWorkplaces(ScheduleForm form){
-        return form.getWorkplaces().stream()
-                .map(w -> new WorkplaceScheduleEntity()
-                        .setWorkplaceUuid(w.getWorkplaceUuid())
-                        .setEmployeesUuids(w.getEmployeesUuids()))
-                .collect(Collectors.toList());
-    }
     public List<WorkplaceScheduleDto> mapScheduleWorkplaces(Long scheduleId){
         return workplaceScheduleRepository.findAllByScheduleId(scheduleId)
                 .stream().map(w -> new WorkplaceScheduleDto()

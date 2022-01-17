@@ -17,15 +17,19 @@ import { EffectsModule } from '@ngrx/effects';
 import * as fromOptionsReducer from './store/options/options.reducer';
 import * as fromFirmReducer from './store/firm/firm.reducer';
 import * as fromSchedulesReducer from './store/schedules/schedules.reducer';
+import * as fromAuthReducer from './store/auth/auth.reducer';
 import { FirmEffects } from './store/firm/firm.effect';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { OptionsEffects } from './store/options/options.effect';
+import { AuthEffects } from './store/auth/auth.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateAdapter } from '@angular/material/core';
 import { SchedulesEffects } from './store/schedules/schedules.effect';
 import { UserViewComponent } from './user/user-view/user-view.component';
 import { authInterceptorProviders } from './security/_helpers/auth.interceptor';
+import { MatCardModule } from '@angular/material/card';
+import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
 
 
 @NgModule({
@@ -51,12 +55,14 @@ import { authInterceptorProviders } from './security/_helpers/auth.interceptor';
     LoginModule,
     HttpClientModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({firm: fromFirmReducer.firmReducer, options: fromOptionsReducer.optionsReducer, schedules: fromSchedulesReducer.schedulesReducer}, {}),
-    EffectsModule.forRoot([FirmEffects, OptionsEffects,SchedulesEffects]),
+    StoreModule.forRoot({auth: fromAuthReducer.authReducer, firm: fromFirmReducer.firmReducer, options: fromOptionsReducer.optionsReducer, schedules: fromSchedulesReducer.schedulesReducer}, {}),
+    EffectsModule.forRoot([AuthEffects, FirmEffects, OptionsEffects,SchedulesEffects]),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: environment.production }),
     NgxMaterialTimepickerModule,
     BrowserAnimationsModule,
     NgxMaterialTimepickerModule,
+    MatCardModule,
+    MatDatepickerModule
 
   ],
   providers: [authInterceptorProviders],

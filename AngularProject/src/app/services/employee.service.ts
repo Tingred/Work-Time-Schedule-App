@@ -28,6 +28,9 @@ export class EmployeeService {
   getOneByUuid(uuid:string): Observable<Employee> {
     return this.http.get(`http://localhost:8080/api/employee/${uuid}`, { observe: 'response' }).pipe(map( response=> response.body as Employee));
   }
+  getOneByUserId(id:number): Observable<Employee> {
+    return this.http.get(`http://localhost:8080/api/employee/by-user-id/${id}`, { observe: 'response' }).pipe(map( response=> response.body as Employee));
+  }
 
   getAllTasks(employeeUuid:string): Observable<ETask[]> {
     return this.http.get(`http://localhost:8080/api/employee/tasks/${employeeUuid}`, { observe: 'response' }).pipe(map( response=> response.body as ETask[]));

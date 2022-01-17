@@ -1,1 +1,74 @@
-<p>register works!</p>
+<div class="col-md-12">
+    <div class="card card-container">
+      <img
+        id="profile-img"
+        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
+        class="profile-img-card"
+      />
+      <form
+        *ngIf="!isSuccessful"
+        [formGroup]="registerForm"
+        (ngSubmit)="registerForm.valid && onSubmit()"
+      >
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="username"
+            minlength="3"
+            maxlength="20"
+          />
+          <div class="alert-danger" *ngIf="registerForm?.controls?.username?.invalid">
+            <div *ngIf="registerForm?.controls?.username?.errors?.required">Username is required</div>
+            <div *ngIf="registerForm?.controls?.username?.errors?.minlength">
+              Username must be at least 3 characters
+            </div>
+            <div *ngIf="registerForm?.controls?.username?.errors?.maxlength">
+              Username must be at most 20 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            class="form-control"
+            formControlName="email"
+          />
+          <div class="alert-danger" *ngIf="registerForm?.controls?.email?.invalid">
+            <div *ngIf="registerForm?.controls?.email?.errors?.required">Email is required</div>
+            <div *ngIf="registerForm?.controls?.email?.errors?.email">
+              Email must be a valid email address
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            class="form-control"
+            formControlName="password"
+          />
+          <div class="alert-danger" *ngIf="registerForm?.controls?.password?.invalid">
+            <div *ngIf="registerForm?.controls?.password?.errors?.required">Password is required</div>
+            <div *ngIf="registerForm?.controls?.password?.errors?.minLength">
+              Password must be at least 6 characters
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary btn-block">Sign Up</button>
+        </div>
+  
+        <div class="alert alert-warning" *ngIf="isSignUpFailed">
+          Signup failed!<br />{{ errorMessage }}
+        </div>
+      </form>
+  
+      <div class="alert alert-success" *ngIf="isSuccessful">
+        Your registration is successful!
+      </div>
+    </div>
+  </div>
+  

@@ -1,5 +1,7 @@
 package com.WorkTimeSchedule.project.module.security.models;
 
+import com.WorkTimeSchedule.project.module.employee.entity.EmployeeEntity;
+
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,6 +39,10 @@ public class User {
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles = new HashSet<>();
+
+    @OneToOne(mappedBy = "user", cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY, optional = false)
+    private EmployeeEntity employee;
 
     public User() {
     }

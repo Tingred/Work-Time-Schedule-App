@@ -37,9 +37,9 @@ public class ScheduleEntity {
     @Column(columnDefinition = "DATE")
     private LocalDate scheduleDate;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     private ShiftEntity shift;
 
     @OneToMany(mappedBy = "schedule",cascade = CascadeType.ALL)
-    List<WorkplaceScheduleEntity> workplaces = new ArrayList<>();
+    private List<WorkplaceScheduleEntity> workplaces = new ArrayList<>();
 }

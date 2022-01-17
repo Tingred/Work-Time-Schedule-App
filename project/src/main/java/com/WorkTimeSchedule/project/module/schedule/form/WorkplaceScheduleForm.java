@@ -12,5 +12,5 @@ import java.util.List;
 public class WorkplaceScheduleForm {
 
     private String workplaceUuid;
-    private List<String> employeesUuids;
+    private List<String> employeeUuids;
 }

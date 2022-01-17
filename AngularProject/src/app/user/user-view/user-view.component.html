@@ -2,3 +2,30 @@
     <mat-calendar [(selected)]="selected"></mat-calendar>
   </mat-card>
   <p>Selected date: {{selected}}</p>
+  <div *ngIf="(schedule$ | async) as schedule">
+    <p><strong>Data:</strong>
+      <br/>
+      {{ schedule?.date }}
+  </p>
+  <p><strong>Zmiana:</strong>
+    <br/>
+    {{ schedule?.shift?.startTime }} - {{ schedule?.shift?.finishTime }} 
+</p>
+<p><strong>Miejsce pracy:</strong>
+  <br/>
+  {{ schedule?.workplaces? schedule.workplaces[0] : '' }}
+</p>
+  </div>
+  <div *ngIf="(tasks$ | async) as tasks">
+    <div class="a-tasks" *ngFor="let task of tasks">
+        <p><strong>Data:</strong>
+            <br/>
+            {{ task?.date }}
+        </p>
+        <p><strong>Treść:</strong>
+            <br/>
+            {{ task?.text }}
+        </p> 
+        <div class="left"><button class="btt" (click)="delete( task.uuid )">Zakończ zadanie</button></div>
+    </div>
+</div>

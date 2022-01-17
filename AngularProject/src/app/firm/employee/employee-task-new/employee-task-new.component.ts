@@ -14,7 +14,7 @@ import * as moment from 'moment';
 @Component({
   selector: 'app-employee-task-new',
   templateUrl: './employee-task-new.component.html',
-  styleUrls: ['./employee-task-new.component.css']
+  styleUrls: ['./employee-task-new.component.scss']
 })
 export class EmployeeTaskNewComponent implements OnInit {
 

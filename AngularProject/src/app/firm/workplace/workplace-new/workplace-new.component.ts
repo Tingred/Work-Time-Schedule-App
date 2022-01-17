@@ -10,7 +10,7 @@ import * as fromActions from '../../../store/firm/firm.actions'
 @Component({
   selector: 'app-workplace-new',
   templateUrl: './workplace-new.component.html',
-  styleUrls: ['./workplace-new.component.css']
+  styleUrls: ['./workplace-new.component.scss']
 })
 export class WorkplaceNewComponent implements OnInit {
 

@@ -57,5 +57,28 @@ VALUES ('08:00:00','15:00:00','e83c5cb3-1abb-444a-b21c-748587cf3e53');
 INSERT INTO shift(start_time,finish_time,uuid)
 VALUES ('15:30:00','21:00:00','049dd503-1b8f-45a0-8a27-14f22a2a0e5b');
 
+-- role
+
+INSERT INTO roles(`name`)
+VALUES ('ROLE_USER');
+
+
+INSERT INTO roles(`name`)
+VALUES ('ROLE_ADMIN');
+
+-- users
+
+INSERT INTO users(`username`,`password`,`email`)
+VALUES ('user','$2a$10$9EWPa0UW6NgTdoF51Y1zWeSQ906Qa/l2KhXAYkXznsXlYskhu6oEa','user@ok.com');
+
+INSERT INTO user_roles(`user_id`,`role_id`)
+VALUES (1,1);
+
+INSERT INTO users(`username`,`password`,`email`)
+VALUES ('root','$2a$10$jKVPJa.0p5tarXk3ywtoMuLk8Ag8.zPfWef8yqoSCDfofMF1I1jqa','admin@ok.com');
+
+INSERT INTO user_roles(`user_id`,`role_id`)
+VALUES (2,2);
+
 
 

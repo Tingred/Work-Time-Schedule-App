@@ -1,21 +1,19 @@
-<form>
     <section class="example-section">
         <span class="example-list-section" *ngIf="(workplaces$ | async) as workplaces">
-            <ul *ngFor="let workplace of workplaces">
+            <ul *ngFor="let workplace of workplaces; let i = index;">
                 {{ workplace.name }}
-                <span *ngIf="(employees$ | async) as employees">
+                <span *ngIf="(getWorkplaceEmployees(workplace.position) | async) as employees">
                 <li *ngFor="let employee of employees">
-                    <span *ngIf="workplace.position == employee.position">
-                        <mat-checkbox 
-                        formControlName="employee.name" 
+                    <mat-checkbox 
                         [color]="color"
-                            [disabled]="false">
-                            {{employee.name}} {{employee.surname}}
-                        </mat-checkbox>
-                    </span>
+                        [disabled]="false"
+                        (change)="toggleEmployee(i, employee.uuid, $event)"
+                        >
+                        {{employee.name}} {{employee.surname}}
+                    </mat-checkbox>
                 </li>
             </span>
             </ul>
         </span>
     </section>
-</form>
+    <button class="btt" (click)="addSchedule()">Dodaj</button>

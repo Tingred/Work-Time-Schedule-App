@@ -19,3 +19,13 @@ export const selectState = createSelector(
     selectState,
     fromReducer.getSchedule
   )
+
+  export const selectScheduleByDate = (date: string | null) => createSelector(
+    selectSchedules,
+    (schedules) => {
+      if (date) {
+        return schedules.find(s => s.date === date)
+      }
+      return null;
+    }
+  );
