@@ -30,6 +30,7 @@ import { UserViewComponent } from './user/user-view/user-view.component';
 import { authInterceptorProviders } from './security/_helpers/auth.interceptor';
 import { MatCardModule } from '@angular/material/card';
 import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
+import { RoleGuardService } from './services/security/role-guard.service';
 
 
 @NgModule({
@@ -41,6 +42,7 @@ import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
@@ -65,7 +67,7 @@ import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
     MatDatepickerModule
 
   ],
-  providers: [authInterceptorProviders],
+  providers: [authInterceptorProviders, RoleGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

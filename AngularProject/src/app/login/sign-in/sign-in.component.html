@@ -7,7 +7,7 @@
       />
       <form
         [formGroup]="signInForm"
-        *ngIf="(isLoggedIn | async) === false"
+        *ngIf="(isLoggedIn$ | async) === false"
         (ngSubmit)="signInForm.valid && onSubmit()"
         novalidate
       >
@@ -50,14 +50,14 @@
           <div
             class="alert alert-danger"
             role="alert"
-            *ngIf="(isLoginFailed | async) === true"
+            *ngIf="(isLoginFailed$ | async) === true"
           >
             Login failed: {{ errorMessage }}
           </div>
         </div>
       </form>
   
-      <div class="alert alert-success" *ngIf="(isLoggedIn | async) === true">
+      <div class="alert alert-success" *ngIf="(isLoggedIn$ | async) === true">
         Logged in as {{ roles$ | async }}.
       </div>
     </div>

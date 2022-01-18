@@ -10,7 +10,7 @@ import * as fromActionsSchedule from '../../store/schedules/schedules.actions';
 import * as fromSelectorsFirm from '../../store/firm/firm.selectors';
 import * as fromActionsFirm from '../../store/firm/firm.actions';
 import { Moment } from 'moment';
-import { Schedule } from 'src/app/interfaces/schedule';
+import { Schedule, ScheduleResponse } from 'src/app/interfaces/schedule';
 import { map } from 'rxjs/operators';
 import { TokenStorageService } from 'src/app/services/security/token-storage.service';
 import { Employee } from 'src/app/interfaces/employee';
@@ -26,7 +26,7 @@ export class UserViewComponent implements OnInit {
 
   selected!: Moment | null;
   tasks$: Observable<ETask[]> = this.store$.pipe(select(fromSelectorsFirm.selectTasks));
-  schedule$: Observable<Schedule | null | undefined> = this.store$.pipe(select(fromSelectorsSchedule.selectScheduleByDate(this.parsedDate)));
+  schedule$: Observable<ScheduleResponse | null | undefined> = this.store$.pipe(select(fromSelectorsSchedule.selectScheduleByDate(null)));
   constructor(
     private store$: Store<AppState>,
     private token: TokenStorageService
@@ -38,13 +38,11 @@ export class UserViewComponent implements OnInit {
     this.store$.dispatch(fromActionsFirm.getEmployee(this.token.getUser().id));
   }
 
-  get parsedDate() {
-    if  (this.selected != null)
-    return this.selected.format('YYYY-MM-DD');
-    else return null;
-   }
-
    delete(uuid: string | undefined) {
     this.store$.dispatch(fromActionsFirm.deleteTask({ uuid: uuid as string }));
+  }
+
+  selectedChange(event: Moment) {
+    this.schedule$ = this.store$.pipe(select(fromSelectorsSchedule.selectScheduleByDate(event.format('YYYY-MM-DD'))));
   }
 }

@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Schedule } from "src/app/interfaces/schedule";
+import { Schedule, ScheduleRequest, ScheduleResponse } from "src/app/interfaces/schedule";
 
 export const getAllSchedules = createAction(
     '[SCHEDULES] Get all schedules'
@@ -7,7 +7,7 @@ export const getAllSchedules = createAction(
 
 export const getAllSchedulesSuccess = createAction(
     '[SCHEDULES] Get all schedules success',
-    props<{ schedules: Array<Schedule> }>()
+    props<{ schedules: Array<ScheduleResponse> }>()
 );
 
 export const getAllSchedulesFailure = createAction(
@@ -21,7 +21,7 @@ export const getAllEmployeeSchedules = createAction(
 
 export const getAllEmployeeSchedulesSuccess = createAction(
     '[SCHEDULES] Get all employee schedules success',
-    props<{  employeeSchedules: Array<Schedule> }>()
+    props<{  employeeSchedules: Array<ScheduleResponse> }>()
 );
 
 export const getAllEmployeeSchedulesFailure = createAction(
@@ -36,7 +36,7 @@ export const getSchedule = createAction(
 
 export const getScheduleSuccess = createAction(
     '[SCHEDULES] Get schedule success',
-    props<{ schedule: Schedule }>()
+    props<{ schedule: ScheduleResponse }>()
 );
 
 export const getScheduleFailure = createAction(
@@ -44,6 +44,9 @@ export const getScheduleFailure = createAction(
     props<{ message: string }>()
 );
 
+export const clearSchedule = createAction(
+    '[SCHEDULES] Clear schedule'
+);
 
 export const deleteSchedule = createAction(
     '[SCHEDULES] Delete schedule',
@@ -62,12 +65,12 @@ export const deleteScheduleFailure = createAction(
 
 export const addSchedule = createAction(
     '[SCHEDULES] add schedule',
-    props<{ schedule: Schedule}>()
+    props<{ schedule: ScheduleRequest}>()
 );
 
 export const addScheduleSuccess = createAction(
     '[SCHEDULES] add schedule success',
-    props<{ schedule: Schedule }>()
+    props<{ schedule: ScheduleResponse }>()
 );
 
 export const addScheduleFailure = createAction(
@@ -77,12 +80,12 @@ export const addScheduleFailure = createAction(
 
 export const updateSchedule = createAction(
     '[SCHEDULES] update schedule',
-    props<{ schedule: Schedule, uuid:string}>()
+    props<{ schedule: ScheduleRequest, uuid:string}>()
 );
 
 export const updateScheduleSuccess = createAction(
     '[SCHEDULES] update schedule success',
-    props<{ schedule: Schedule}>()
+    props<{ schedule: ScheduleResponse}>()
 );
 
 export const updateScheduleFailure = createAction(

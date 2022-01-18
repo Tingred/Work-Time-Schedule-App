@@ -9,11 +9,13 @@ import { EmployeeTasksComponent } from './employee/employee-tasks/employee-tasks
 import { RouterModule } from '@angular/router';
 import { EmployeeTaskNewComponent } from './employee/employee-task-new/employee-task-new.component';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { DateAdapter, MatNativeDateModule, MAT_DATE_FORMATS, MAT_DATE_LOCALE } from '@angular/material/core';
 import { MomentDateModule, MomentDateAdapter, MAT_MOMENT_DATE_ADAPTER_OPTIONS } from '@angular/material-moment-adapter';
-import {MatIconModule} from '@angular/material/icon';
-import {MatTooltipModule} from '@angular/material/tooltip';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSelectModule } from '@angular/material/select';
+import { MatButtonModule } from '@angular/material/button';
 
  export const DateFormats = {
             parse: {
@@ -45,7 +47,9 @@ import {MatTooltipModule} from '@angular/material/tooltip';
     MatInputModule,
     MatNativeDateModule,
     MatIconModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatSelectModule,
+    MatButtonModule
   ],
   exports: [
     WorkplaceMainComponent,

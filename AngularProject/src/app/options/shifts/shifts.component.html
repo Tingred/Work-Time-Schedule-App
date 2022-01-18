@@ -1,23 +1,33 @@
 <app-shift-new></app-shift-new>
     <div class="view">
-        <div *ngIf="(shifts$ | async) as shifts">
-            <div class="a-shift" *ngFor="let shift of shifts">
-                <p><strong>Początek:</strong>
-                    <br/>
-                    {{ shift.startTime }}
-                </p>
-                <p><strong>Koniec:</strong>
-                    <br/>
-                    {{ shift.finishTime}}
-                </p> 
-                <div class="left"><button class="btt" (click)="delete( shift.uuid )">Usuń</button></div>
-                <a [routerLink]="['/zmiany/aktualizuj/'+ shift.uuid]">
-                    <div class="left">
-                        <button class="btt">Aktualizuj</button>
+        <ng-container *ngIf="(shifts$ | async) as shifts">
+            <div class="shift" *ngFor="let shift of shifts">
+                <div class="shift__info">
+                    <mat-icon class="shift__icon">pending_actions</mat-icon>
+                    <div class="shift__data">
+                        <p class="shift__data--label">
+                            <strong>Początek:</strong>
+                        </p>
+                        <p class="shift__data--value">
+                            <span [matTooltip]="shift.startTime">
+                                {{ shift.startTime }}
+                            </span>
+                        </p>
+                        <p class="shift__data--label">
+                            <strong>Koniec:</strong>
+                        </p>
+                        <p class="shift__data--value">
+                            <span [matTooltip]="shift.finishTime">{{ shift.finishTime }}</span>
+                        </p>
                     </div>
-                </a> 
+                </div>
+                <button class="shift__button" (click)="delete( shift.uuid )">
+                    Usuń
+                </button> 
+                <button class="shift__button" [routerLink]="['/zmiany/aktualizuj/'+ shift.uuid]">
+                    Aktualizuj
+                </button> 
             </div>
-           
-    </div>
+    </ng-container>
 </div>
 

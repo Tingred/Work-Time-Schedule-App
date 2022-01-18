@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 import { ValueArrayPipe } from 'src/app/pipes/value-array.pipe';
 import { Observable } from 'rxjs';
@@ -15,8 +15,8 @@ import * as fromActions from '../../../store/firm/firm.actions'
 export class WorkplaceNewComponent implements OnInit {
 
   form = this.fb.group({
-    name: new FormControl(''),
-    position: new FormControl('')
+    name: new FormControl('', [Validators.required]),
+    position: new FormControl('', [Validators.required])
   });
 
   positions: Observable<string[]> = this.workplaceService.getPositions();

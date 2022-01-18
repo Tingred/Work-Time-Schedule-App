@@ -1,18 +1,18 @@
 import { Action, createFeatureSelector, createReducer, on, State } from '@ngrx/store';
-import { Schedule } from 'src/app/interfaces/schedule';
+import { Schedule, ScheduleResponse } from 'src/app/interfaces/schedule';
 import { AppState } from 'src/app/interfaces/store';
 import * as fromActions from './schedules.actions';
 
 export interface SchedulesState {
-    employeeSchedules: Array<Schedule>;
-    schedules: Array<Schedule>;
-    schedule: Schedule;
+    employeeSchedules: Array<ScheduleResponse>;
+    schedules: Array<ScheduleResponse>;
+    schedule: ScheduleResponse | null;
 }
 
 export const initialState: SchedulesState = {
     employeeSchedules: [],
     schedules: [],
-    schedule: {} as Schedule
+    schedule: null
 };
 
 const _schedulesReducer = createReducer(
@@ -28,6 +28,10 @@ const _schedulesReducer = createReducer(
     on(fromActions.getScheduleSuccess, (state, {schedule}) => ({
         ...state,
         schedule
+    })),
+    on(fromActions.clearSchedule, (state) => ({
+        ...state,
+        schedule: null
     })),
     on(fromActions.deleteScheduleSuccess, (state, {date,shiftUuid}) => ({
         ...state,

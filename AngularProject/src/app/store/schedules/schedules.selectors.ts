@@ -1,4 +1,6 @@
 import { createSelector, on } from '@ngrx/store';
+import { WorkplaceNode, Workplace } from 'src/app/interfaces/workplace';
+import { Employee } from 'src/app/interfaces/employee';
 import * as fromReducer from './schedules.reducer';
 
 export const selectState = createSelector(
@@ -18,13 +20,29 @@ export const selectState = createSelector(
   export const selectSchedule = createSelector(
     selectState,
     fromReducer.getSchedule
-  )
+  );
+
+  export const selectScheduleWorplaceNodes = createSelector(
+    selectSchedule,
+    (schedule) => schedule?.workplaces.map((w: {workplace: Workplace, employees: Array<Employee>}) => ({
+      name: w.workplace.name,
+      children: w.employees?.map((e: Employee) => ({name: e.name + ' ' + e.surname, children: []}) as WorkplaceNode)
+    }) as WorkplaceNode)
+  );
+
+  export const selectScheduleExists = createSelector(
+    selectSchedule,
+    (schedule) => {
+      console.log(!!schedule)
+      return !!schedule;
+    }
+  );
 
   export const selectScheduleByDate = (date: string | null) => createSelector(
-    selectSchedules,
-    (schedules) => {
+    selectEmployeeSchedules,
+    (employeeSchedules) => {
       if (date) {
-        return schedules.find(s => s.date === date)
+        return employeeSchedules.find(s => s.date === date)
       }
       return null;
     }

@@ -16,8 +16,8 @@ import { Roles } from 'src/app/interfaces/employee';
 })
 export class SignInComponent implements OnInit {
 
-  isLoggedIn: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selecIsLoggedIn));
-  isLoginFailed: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selectIsLoginFailed));
+  isLoggedIn$: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selecIsLoggedIn));
+  isLoginFailed$: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selectIsLoginFailed));
   errorMessage = '';
   roles$: Observable<Array<Roles>> = this.store$.pipe(select(fromSelectorsAuth.selectUserRoles));
   signInForm: FormGroup = this.fb.group({

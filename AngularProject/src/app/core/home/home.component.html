@@ -1,0 +1,17 @@
+<ng-container *ngIf="(isLogged$ | async) === false">
+    <h1>Witaj użytkowniku,
+    </h1>
+    <p>
+        Zaloguj się, aby kontynuować
+    </p>
+</ng-container>
+
+<ng-container *ngIf="(isLogged$ | async) === true">
+    <h1>Witaj {{(user$ | async)?.username}}
+        <br/>
+    </h1>
+    <p>
+        Wybierz pozycję z menu powyżej
+    </p>
+</ng-container>
+

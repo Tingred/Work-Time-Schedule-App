@@ -1,15 +1,18 @@
 <div class="new-workplace">
+    <h2>Dodaj nowe stanowisko pracy</h2>
     <form [formGroup]="form">
-    <label for="name">Dodaj nowe stanowisko pracy:</label>
-    <input formControlName="name" type="text" placeholder="Podaj nazwę">
-    <a class="choose-position">
-        <select formControlName="position">
-        <option value="" disabled>Wybierz kwalifikację</option>
-        <ng-container *ngIf="(positions | async) as positions">
-            <option *ngFor="let position of positions" [ngValue]="position">{{position}}</option>
-           </ng-container>
-    </select>
-</a>
-    <button class="btt" (click)="addNew()">Dodaj</button>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Stanowisko</mat-label>
+        <input matInput placeholder="Podaj nazwę" formControlName="name">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+        <mat-label>Kwalifikacja</mat-label>
+        <mat-select formControlName="position">
+            <ng-container *ngIf="(positions | async) as positions">
+                <mat-option *ngFor="let position of positions" [value]="position">{{position}}</mat-option>
+            </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <button mat-raised-button [disabled]="!form.valid" (click)="addNew()">Dodaj</button>
     </form>
 </div>

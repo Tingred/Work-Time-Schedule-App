@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { Store,select } from '@ngrx/store';
 import { AppState } from 'src/app/interfaces/store'
@@ -18,8 +18,8 @@ import { Shift } from 'src/app/interfaces/shift';
 export class ShiftUpdateComponent implements OnInit {
 
   form = this.fb.group({
-    startTime: new FormControl(''),
-    finishTime: new FormControl('')
+    startTime: new FormControl('', [Validators.required]),
+    finishTime: new FormControl('', [Validators.required])
   });
   shift$: Observable<Shift> = this.store$.pipe(select(fromSelectors.selectShift));
   

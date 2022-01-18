@@ -1,11 +1,14 @@
 <div class="new-shift">
-    
+    <h2>Dodaj nową zmianę</h2>
     <form [formGroup]="form">
-    <label>Dodaj nową zmianę</label> 
-    <label for="start">Godzina startu:</label>
-    <input formControlName="startTime" type="text" placeholder="HH:mm:ss">
-    <label for="finish">Godzina końca:</label>
-    <input formControlName="finishTime" type="text" placeholder="HH:mm:ss">
-    <button class="btt" (click)="addShift()">Dodaj</button>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Godzina startu</mat-label>
+        <input matInput placeholder="HH:mm:ss" type="time" step="5" formControlName="startTime">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Godzina końca</mat-label>
+        <input matInput placeholder="HH:mm:ss" type="time" step="5" formControlName="finishTime">
+    </mat-form-field>
+      <button mat-raised-button [disabled]="!form.valid" (click)="addShift()">Dodaj</button>
     </form>
 </div>

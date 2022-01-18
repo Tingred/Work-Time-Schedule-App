@@ -5,6 +5,10 @@ import { ShiftNewComponent } from './shift-new/shift-new.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ShiftUpdateComponent } from './shift-update/shift-update.component';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 
@@ -17,8 +21,11 @@ import { ShiftUpdateComponent } from './shift-update/shift-update.component';
   imports: [
     CommonModule,
     ReactiveFormsModule,
-    RouterModule
-  
+    RouterModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTooltipModule
   ],
   exports: [
     ShiftsComponent,

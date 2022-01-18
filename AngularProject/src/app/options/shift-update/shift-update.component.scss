@@ -1,34 +1,27 @@
-div {
-    font-size: 20px;
-}
-label {
-    padding-left: 2.5%;
-    padding-top: 2.5%;
-    padding-bottom: 2.5%;
-    padding-right: 1%;
-    display: inline-block;
-  }
-input#name {
-    padding-left: 1%;
-    border: 1px solid black;
-    border-radius: 3px;
-    font-size: 18px;
-
-}
-
-button.btt {
-    border: 1px solid rgb(60, 132, 160);
-    background-color: rgb(106, 208, 255);
-    border-radius: 4px;
-    margin-left: 0.5%;
-    font-size: 16px;
-}
-button.btt:hover {
-    background-color: rgb(82, 82, 230);
-    transition: 0.5s;
-}
 .update-shift {
-    border-bottom: 2px solid black;
-    border-top: 2px solid black;
-
+    margin: 32px;
+    border-radius: 12px;
+    -webkit-box-shadow: 1px 18px 27px -10px #333;
+    -moz-box-shadow: 1px 18px 27px -10px #333;
+    box-shadow: 1px 18px 27px -10px #333;
+    background-color: #eee;
+    padding: 16px;
+    h2 {
+        text-transform: uppercase;
+    }
+    form {
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        justify-content: center;
+        > * {
+            margin: 0 6px;
+        }
+        button {
+            line-height: 52px;
+            padding-left: 32px;
+            padding-right: 32px;
+            text-transform: uppercase;
+        }
+    }
 }

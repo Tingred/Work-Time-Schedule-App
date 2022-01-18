@@ -10,7 +10,8 @@ import { SingleScheduleComponent } from './single-schedule/single-schedule.compo
 import {MatInputModule} from '@angular/material/input';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
-
+import { MatIconModule } from '@angular/material/icon';
+import {MatTreeModule} from '@angular/material/tree';
 
 
 @NgModule({
@@ -27,7 +28,9 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     RouterModule,
     MatCheckboxModule,
     MatInputModule,
-    MatFormFieldModule
+    MatFormFieldModule,
+    MatTreeModule,
+    MatIconModule
   ],
   exports: [
     ScheduleMainComponent

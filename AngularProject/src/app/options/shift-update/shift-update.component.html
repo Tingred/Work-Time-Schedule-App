@@ -1,11 +1,14 @@
 <div class="update-shift">
-    
+    <h2>Zaktualizuj zmianę</h2>
     <form [formGroup]="form">
-    <label>Zaktualizuj zmianę</label> 
-    <label for="start">Godzina startu:</label>
-    <input formControlName="startTime" type="text" placeholder="shift$.startTime">
-    <label for="finish">Godzina końca:</label>
-    <input formControlName="finishTime" type="text" placeholder="shift$.finishTime">
-    <button class="btt" (click)="updateShift()">Aktualizuj</button>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Godzina startu</mat-label>
+        <input matInput placeholder="HH:mm:ss" type="time" step="5" formControlName="startTime">
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Godzina końca</mat-label>
+        <input matInput placeholder="HH:mm:ss" type="time" step="5" formControlName="finishTime">
+    </mat-form-field>
+      <button mat-raised-button [disabled]="!form.valid" (click)="updateShift()">Aktualizuj</button>
     </form>
 </div>

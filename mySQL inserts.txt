@@ -80,5 +80,11 @@ VALUES ('root','$2a$10$jKVPJa.0p5tarXk3ywtoMuLk8Ag8.zPfWef8yqoSCDfofMF1I1jqa','a
 INSERT INTO user_roles(`user_id`,`role_id`)
 VALUES (2,2);
 
+UPDATE employee
+SET user_id = 1
+WHERE id = 1;
 
+UPDATE employee
+SET user_id = 2
+WHERE id = 2;
 
