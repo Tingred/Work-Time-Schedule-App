@@ -13,5 +13,7 @@ public interface WorkplaceScheduleRepository extends JpaRepository<WorkplaceSche
 
     List<WorkplaceScheduleEntity> findAllByScheduleId(Long id);
 
-    WorkplaceScheduleEntity findOneByEmployeesUuidsAndSchedule(String uuid,Long scheduleId);
+    WorkplaceScheduleEntity findOneByEmployeesUuidsAndScheduleId(String uuid,Long scheduleId);
+
+    List<WorkplaceScheduleEntity> findAllByEmployeesUuidsContains(String uuid);
 }

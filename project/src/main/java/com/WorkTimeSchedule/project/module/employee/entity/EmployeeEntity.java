@@ -49,7 +49,7 @@ public class EmployeeEntity {
     @Enumerated(EnumType.STRING)
     private PositionEnum position;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
     private User user;
 }

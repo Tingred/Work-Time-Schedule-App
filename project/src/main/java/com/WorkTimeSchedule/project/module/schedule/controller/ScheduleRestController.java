@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -50,7 +51,7 @@ public class ScheduleRestController {
 
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value = "/api/schedule/update")
-    public void updateSchedule(@RequestBody ScheduleForm form){
+    public void updateSchedule(@Valid @RequestBody ScheduleForm form){
         scheduleService.update(form);
     }
 

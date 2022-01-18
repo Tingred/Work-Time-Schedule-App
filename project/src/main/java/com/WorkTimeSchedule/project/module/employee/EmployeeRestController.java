@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -62,7 +63,7 @@ public class EmployeeRestController {
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/api/employee/new-task/{uuid}")
     public TaskDto addTask(@PathVariable String uuid,
-                           @RequestBody TaskForm form){
+                           @Valid @RequestBody TaskForm form){
         return taskService.addTask(uuid,form);
     }
     @CrossOrigin(origins = "http://localhost:4200")

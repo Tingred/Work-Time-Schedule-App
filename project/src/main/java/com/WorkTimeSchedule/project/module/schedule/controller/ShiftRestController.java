@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -34,13 +35,13 @@ public class ShiftRestController {
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @PostMapping(value = "/api/shift/new")
-    public ShiftDto createShift(@RequestBody ShiftForm form){
+    public ShiftDto createShift(@Valid @RequestBody ShiftForm form){
         return shiftService.createShift(form);
     }
     @CrossOrigin(origins = "http://localhost:4200")
     @PutMapping(value = "/api/shift/update/{uuid}")
     public ShiftDto updateShift(@PathVariable String uuid,
-                                @RequestBody ShiftForm form){
+                                @Valid @RequestBody ShiftForm form){
         return shiftService.update(form,uuid);
     }
     @CrossOrigin(origins = "http://localhost:4200")
