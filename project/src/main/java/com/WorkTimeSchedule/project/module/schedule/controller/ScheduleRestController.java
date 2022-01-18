@@ -25,37 +25,37 @@ public class ScheduleRestController {
     @Autowired
     private ScheduleService scheduleService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @PostMapping(value = "/api/schedule/new")
     public void newSchedule(@RequestBody ScheduleForm form) {
         scheduleService.save(form);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @GetMapping(value = "/api/schedule/get-all")
     public List<ScheduleDto> getAllSchedules(){
         return scheduleService.getAllSchedules();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @GetMapping(value = "/api/schedule/get/{date}/{shiftUuid}")
     public ScheduleDto getSchedule(@PathVariable String date,
                                    @PathVariable String shiftUuid){
         return scheduleService.getSchedule(date, shiftUuid);
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @GetMapping(value = "/api/schedule/get-all/{employeeUuid}")
     public List<ScheduleDto> getEmployeeSchedules(@PathVariable String employeeUuid){
         return scheduleService.getAllEmployeeSchedules(employeeUuid);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @PutMapping(value = "/api/schedule/update")
     public void updateSchedule(@Valid @RequestBody ScheduleForm form){
         scheduleService.update(form);
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @DeleteMapping(value = "/api/schedule/delete/{date}/{shiftUuid}")
     public void deleteSchedule(@PathVariable String date,
                                @PathVariable String shiftUuid){

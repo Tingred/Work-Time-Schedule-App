@@ -19,32 +19,32 @@ public class WorkplaceRestController {
     @Autowired
     private WorkplaceService workplaceService;
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @GetMapping(value = "/api/workplace/all")
     public List<WorkplaceDto> getList() {
         return workplaceService.getAll();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @GetMapping(value = "/api/workplace/positions")
     public List<String> getPositions() {
         return workplaceService.getPositions();
     }
 
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @PostMapping(value = "/api/workplace/new")
     public WorkplaceDto newWorkplace(
             @RequestBody WorkplaceForm workplace){
         return workplaceService.create(workplace);
 
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @DeleteMapping(value = "/api/workplace/delete/{uuid}")
     public void deleteWorkplace(
             @PathVariable String uuid){
         workplaceService.delete(uuid);
     }
-    @CrossOrigin(origins = "http://localhost:4200")
+    @CrossOrigin(origins = {"http://localhost:4200", "https://worktime-schedule-app.herokuapp.com"})
     @PutMapping(value = "/api/workplace/update/{uuid}")
     public void updateWorkplace(
             @PathVariable String uuid,

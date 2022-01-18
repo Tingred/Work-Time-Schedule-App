@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  baseUrl: 'https://worktime-schedule-api.heroku.com'
+  baseUrl: 'https://worktime-schedule-api.herokuapp.com'
 };
