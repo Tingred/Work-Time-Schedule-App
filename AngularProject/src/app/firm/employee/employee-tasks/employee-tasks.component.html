@@ -2,16 +2,24 @@
 [uuid]="employeeUuid"></app-employee-task-new>
 <div class="view">
     <div *ngIf="(tasks$ | async) as tasks">
-        <div class="a-tasks" *ngFor="let task of tasks">
-            <p><strong>Data:</strong>
-                <br/>
-                {{ task.date }}
+        <div class="task" *ngFor="let task of tasks">
+            <p class="task__data--label">
+                <strong>Data:</strong>
             </p>
-            <p><strong>Treść:</strong>
-                <br/>
+            <p class="task__data--value">
+                    {{ task.text }}
+            </p>
+            <p class="task__data--label">
+                <strong>Treść:</strong>
+            </p>
+            <p class="task__data--value">
                 {{ task.text }}
-            </p> 
-            <div class="left"><button class="btt" (click)="delete( task.uuid )">Usuń</button></div>
+            </p>
+            <div>
+                <button class="task__delete" (click)="delete( task.uuid )">
+                    Usuńss
+                </button>
+            </div>
         </div>
 </div>
 </div>
