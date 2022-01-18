@@ -1,5 +1,5 @@
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
-import { FormBuilder, FormControl } from '@angular/forms';
+import { FormBuilder, FormControl, Validators } from '@angular/forms';
 import { WorkplaceService } from 'src/app/services/workplace.service';
 import { ValueArrayPipe } from 'src/app/pipes/value-array.pipe';
 import { Observable } from 'rxjs';
@@ -19,8 +19,8 @@ import * as moment from 'moment';
 export class EmployeeTaskNewComponent implements OnInit {
 
   form = this.fb.group({
-    date: new FormControl(''),
-    text: new FormControl('')
+    date: new FormControl('',[Validators.required]),
+    text: new FormControl('',[Validators.required])
   });
 
   constructor(

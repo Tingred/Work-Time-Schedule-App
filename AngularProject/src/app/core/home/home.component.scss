@@ -1,0 +1,26 @@
+.view {
+    text-align: center;
+    padding-bottom: 1%;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    &__icon, mat-icon {
+        padding: 20px;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+    }
+    .home-info{
+        margin-bottom: 20px;
+        -webkit-box-shadow: 1px 18px 27px -10px #333;
+        -moz-box-shadow: 1px 18px 27px -10px #333;
+        box-shadow: 1px 18px 27px -10px #333;
+        background-color: #eee;
+        padding: 8px;
+        h2{
+            margin-bottom: 0;
+        }
+    }
+}
+h1{
+    font-size: 30px;
+}

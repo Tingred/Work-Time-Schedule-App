@@ -1,19 +1,39 @@
-<mat-card class="demo-inline-calendar-card">
+<div class="view">
+    <div class="schedule-info">
+        <h2>
+            Wybierz datę a następnie zmianę, aby przejść do harmonogramu.
+        </h2>
+    </div>
+    <mat-card class="demo-inline-calendar-card">
     <mat-calendar [(selected)]="selected"></mat-calendar>
   </mat-card>
-  <div class="view">
-    <div *ngIf="(shifts$ | async) as shifts">
-        <div class="a-shift" *ngFor="let shift of shifts">
-            <p><strong>Początek:</strong>
-                <br/>
-                {{ shift.startTime }}
-            </p>
-            <p><strong>Koniec:</strong>
-                <br/>
-                {{ shift.finishTime}}
-            </p> 
-            <a [routerLink]="['/harmonogram/'+ parsedDate + '/' + shift.uuid]">
-                <button class="btt">Wybierz</button>
-            </a> 
+    <ng-container *ngIf="(shifts$ | async) as shifts">
+        <div class="shift" *ngFor="let shift of shifts">
+            <div class="shift__info">
+            <mat-icon class="shift__icon">pending_actions</mat-icon>
+            <div class="shift__data">
+                <p class="shift__data--label">
+                    <strong>Początek:</strong>
+                </p>
+                <p class="shift__data--value">
+                    <span [matTooltip]="shift.startTime">
+                        {{ shift.startTime }}
+                    </span>
+                </p>
+                <p class="shift__data--label">
+                    <strong>Koniec:</strong>
+                </p>
+                <p class="shift__data--value">
+                    <span [matTooltip]="shift.finishTime">
+                        {{ shift.finishTime }}
+                    </span>
+                </p>
+            </div>
+            </div>
+                <button class="shift__button" 
+                [routerLink]="['/harmonogram/'+ parsedDate + '/' + shift.uuid]">
+                    Wybierz
+                </button>
         </div>
+</ng-container>
 </div>

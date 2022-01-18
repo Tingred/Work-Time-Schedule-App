@@ -1,7 +1,9 @@
+<span *ngIf="(shift$ | async) as shift">
+    <p>Data: {{ date }}</p>
+    <p>Od: {{shift.startTime}} <br/>
+        Do: {{shift.finishTime}}</p>
+</span>
 <section class="form-section">
-    <span *ngIf="(shift$ | async) as shift">
-        <p>{{shift.startTime}} - {{shift.finishTime}}</p>
-    </span>
     <span class="example-list-section" *ngIf="(workplaces$ | async) as workplaces">
         <ul *ngFor="let workplace of workplaces; let i = index;">
             {{ workplace.name }}
@@ -19,13 +21,13 @@
         </ul>
     </span>
     <span  *ngIf="(scheduleExists$ | async) === false">
-        <button class="btt" (click)="addSchedule()">Dodaj</button>
+        <button class="schedule__button" (click)="addSchedule()">Dodaj</button>
     </span>
     <span *ngIf="(scheduleExists$ | async) === true">
-        <button class="btt" (click)="updateSchedule()">Zaktualizuj</button>
+        <button class="schedule__button" (click)="updateSchedule()">Zaktualizuj</button>
     </span>
     <span *ngIf="(scheduleExists$ | async) === true">
-        <button class="btt" (click)="deleteSchedule()">Usuń</button>
+        <button class="schedule__button" (click)="deleteSchedule()">Usuń</button>
     </span>
 </section>
 <section class="presentation-section">
@@ -34,6 +36,7 @@
         <!-- There is inline padding applied to this node using styles.
           This padding value depends on the mat-icon-button width. -->
         <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+            <mat-icon>person</mat-icon>
             {{node.name}}
         </mat-tree-node>
         <!-- This is the tree node template for expandable nodes -->

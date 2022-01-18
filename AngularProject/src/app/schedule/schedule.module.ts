@@ -12,6 +12,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
+import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import {MatTreeModule} from '@angular/material/tree';
     MatInputModule,
     MatFormFieldModule,
     MatTreeModule,
-    MatIconModule
+    MatIconModule,
+    MatButtonModule,
+    MatTooltipModule
   ],
   exports: [
     ScheduleMainComponent

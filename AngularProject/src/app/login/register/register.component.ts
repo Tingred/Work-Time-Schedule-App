@@ -14,8 +14,8 @@ import * as fromSelectorsAuth from '../../store/auth/auth.selectors';
 })
 export class RegisterComponent implements OnInit {
 
-  isSuccessful: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selectIsSuccessful));
-  isSignUpFailed: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selectIsSignUpFailed));
+  isSuccessful$: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selectIsSuccessful));
+  isSignUpFailed$: Observable<boolean> = this.store$.pipe(select(fromSelectorsAuth.selectIsSignUpFailed));
   errorMessage = '';
 
   registerForm: FormGroup = this.fb.group({

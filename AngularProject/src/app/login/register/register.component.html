@@ -6,7 +6,7 @@
         class="profile-img-card"
       />
       <form
-        *ngIf="!isSuccessful"
+        *ngIf="(isSuccessful$ | async) === false"
         [formGroup]="registerForm"
         (ngSubmit)="registerForm.valid && onSubmit()"
       >
@@ -61,12 +61,12 @@
           <button class="btn btn-primary btn-block">Sign Up</button>
         </div>
   
-        <div class="alert alert-warning" *ngIf="isSignUpFailed">
+        <div class="alert alert-warning" *ngIf="(isSignUpFailed$ | async) === true">
           Signup failed!<br />{{ errorMessage }}
         </div>
       </form>
   
-      <div class="alert alert-success" *ngIf="isSuccessful">
+      <div class="alert alert-success" *ngIf="(isSuccessful$ | async) === true">
         Your registration is successful!
       </div>
     </div>

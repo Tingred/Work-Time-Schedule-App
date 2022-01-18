@@ -101,10 +101,6 @@ export class SingleScheduleComponent implements OnInit, OnDestroy {
     console.log(this.form.value);
   }
 
-  print(){
-    console.log(this.shiftUuid);
-    console.log(this.date)
-  }
   addSchedule() {
     const scheduleFromForm = {
       date: this.date,
