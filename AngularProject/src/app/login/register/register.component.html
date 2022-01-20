@@ -1,74 +1,51 @@
-<div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form
-        *ngIf="(isSuccessful$ | async) === false"
-        [formGroup]="registerForm"
-        (ngSubmit)="registerForm.valid && onSubmit()"
-      >
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="username"
-            minlength="3"
-            maxlength="20"
-          />
-          <div class="alert-danger" *ngIf="registerForm?.controls?.username?.invalid">
-            <div *ngIf="registerForm?.controls?.username?.errors?.required">Username is required</div>
-            <div *ngIf="registerForm?.controls?.username?.errors?.minlength">
-              Username must be at least 3 characters
-            </div>
-            <div *ngIf="registerForm?.controls?.username?.errors?.maxlength">
-              Username must be at most 20 characters
-            </div>
+<div class="register">
+  <div class="register__card">
+    <form *ngIf="(isSuccessful$ | async) === false" [formGroup]="registerForm"
+      (ngSubmit)="registerForm.valid && onSubmit()">
+      <div class="form-group">
+        <mat-label>Login: </mat-label>
+        <input matInput type="text" class="form-control" formControlName="username" minlength="3" maxlength="20" />
+        <div class="alert-danger" *ngIf="registerForm?.controls?.username?.invalid">
+          <div *ngIf="registerForm?.controls?.username?.errors?.required">Login jest wymagany!</div>
+          <div *ngIf="registerForm?.controls?.username?.errors?.minlength">
+            Login musi mieć conajmniej 3 litery
+          </div>
+          <div *ngIf="registerForm?.controls?.username?.errors?.maxlength">
+            Login może zawierać maksymalnie 20 liter
           </div>
         </div>
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input
-            type="email"
-            class="form-control"
-            formControlName="email"
-          />
-          <div class="alert-danger" *ngIf="registerForm?.controls?.email?.invalid">
-            <div *ngIf="registerForm?.controls?.email?.errors?.required">Email is required</div>
-            <div *ngIf="registerForm?.controls?.email?.errors?.email">
-              Email must be a valid email address
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            formControlName="password"
-          />
-          <div class="alert-danger" *ngIf="registerForm?.controls?.password?.invalid">
-            <div *ngIf="registerForm?.controls?.password?.errors?.required">Password is required</div>
-            <div *ngIf="registerForm?.controls?.password?.errors?.minLength">
-              Password must be at least 6 characters
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <button class="btn btn-primary btn-block">Sign Up</button>
-        </div>
-  
-        <div class="alert alert-warning" *ngIf="(isSignUpFailed$ | async) === true">
-          Signup failed!<br />{{ errorMessage }}
-        </div>
-      </form>
-  
-      <div class="alert alert-success" *ngIf="(isSuccessful$ | async) === true">
-        Your registration is successful!
       </div>
+      <div class="form-group">
+        <mat-label>Email: </mat-label>
+        <input matInput type="email" class="form-control" formControlName="email" />
+        <div class="alert-danger" *ngIf="registerForm?.controls?.email?.invalid">
+          <div *ngIf="registerForm?.controls?.email?.errors?.required">Email jest wymagany!</div>
+          <div *ngIf="registerForm?.controls?.email?.errors?.email">
+            Adres email musi być poprawny
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <mat-label>Hasło: </mat-label>
+        <input matInput type="password" class="form-control" formControlName="password" />
+        <div class="alert-danger" *ngIf="registerForm?.controls?.password?.invalid">
+          <div *ngIf="registerForm?.controls?.password?.errors?.required">Hasło jest wymagane!</div>
+          <div *ngIf="registerForm?.controls?.password?.errors?.minlength">
+            Hasło musi mieć conajmniej 6 liter
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button mat-raised-button [disabled]="!registerForm.valid" type="submit">Potwierdź</button>
+      </div>
+
+      <div class="alert alert-warning" *ngIf="(isSignUpFailed$ | async) === true">
+        Coś poszło nie tak...<br />{{ errorMessage }}
+      </div>
+    </form>
+
+    <div class="alert alert-success" *ngIf="(isSuccessful$ | async) === true">
+      Rejestracja zakończona pomyślnie!
     </div>
   </div>
-  
+</div>

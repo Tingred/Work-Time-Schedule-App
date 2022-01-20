@@ -30,6 +30,14 @@ export const selectState = createSelector(
     }) as WorkplaceNode)
   );
 
+  export const selectScheduleCheckboxInitialData = createSelector(
+    selectSchedule,
+    (schedule) => schedule?.workplaces.map((w: {workplace: Workplace, employees: Array<Employee>}) => ({
+      workplaceUuid: w.workplace.uuid,
+      employeeUuids: w.employees.map(e => e.uuid)
+    }))
+  );
+
   export const selectScheduleExists = createSelector(
     selectSchedule,
     (schedule) => {

@@ -1,65 +1,31 @@
-<div class="col-md-12">
-    <div class="card card-container">
-      <img
-        id="profile-img"
-        src="//ssl.gstatic.com/accounts/ui/avatar_2x.png"
-        class="profile-img-card"
-      />
-      <form
-        [formGroup]="signInForm"
-        *ngIf="(isLoggedIn$ | async) === false"
-        (ngSubmit)="signInForm.valid && onSubmit()"
-        novalidate
-      >
-        <div class="form-group">
-          <label for="username">Username</label>
-          <input
-            type="text"
-            class="form-control"
-            formControlName="username"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="signInForm.controls.username.invalid"
-          >
-            Username is required!
-          </div>
+<div class="login">
+  <div class="login__card">
+    <form [formGroup]="signInForm" *ngIf="(isLoggedIn$ | async) === false" (ngSubmit)="signInForm.valid && onSubmit()"
+      novalidate>
+      <div class="form-group">
+        <mat-label>Login: </mat-label>
+        <input matInput type="text" class="form-control" formControlName="username" />
+        <div class="alert-danger" *ngIf="signInForm.controls.username.invalid">
+          Login jest wymagany!
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input
-            type="password"
-            class="form-control"
-            formControlName="password"
-          />
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="signInForm.controls.password.invalid"
-          >
-            <div *ngIf="signInForm?.controls?.password?.errors?.required">Password is required</div>
-          </div>
-        </div>s
-        <div class="form-group">
-          <button class="btn btn-primary btn-block" type="submit">
-            Login
-          </button>
-        </div>
-        <div class="form-group">
-          <div
-            class="alert alert-danger"
-            role="alert"
-            *ngIf="(isLoginFailed$ | async) === true"
-          >
-            Login failed: {{ errorMessage }}
-          </div>
-        </div>
-      </form>
-  
-      <div class="alert alert-success" *ngIf="(isLoggedIn$ | async) === true">
-        Logged in as {{ roles$ | async }}.
       </div>
-    </div>
+      <div class="form-group">
+        <mat-label>Hasło: </mat-label>
+        <input matInput type="password" class="form-control" formControlName="password" />
+        <div class="alert-danger" *ngIf="signInForm.controls.password.invalid">
+          <div *ngIf="signInForm?.controls?.password?.errors?.required">Hasło jest wymagane!</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <button mat-raised-button [disabled]="!signInForm.valid" type="submit">
+          Zaloguj
+        </button>
+      </div>
+      <div class="form-group">
+        <div class="alert-danger" *ngIf="(isLoginFailed$ | async) === true">
+          Błąd logowania: {{ errorMessage }}
+        </div>
+      </div>
+    </form>
   </div>
-  
+</div>

@@ -1,14 +1,14 @@
 <div class="header" *ngIf="isAdmin(roles$ | async)">
     <button class="header__link" [routerLink]="['/harmonogram']" routerLinkActive="active">
-        <span class="header__link--text">Harmonogram</span>
+        <span class="header__link--text" matTooltip="Harmonogram">Harmonogram</span>
     </button>
     <button class="header__link" [routerLink]="['/stanowiska']" routerLinkActive="active">
-        <span class="header__link--text">Stanowiska</span>
+        <span class="header__link--text" matTooltip="Stanowiska">Stanowiska</span>
     </button>
     <button class="header__link" [routerLink]="['/pracownicy']" routerLinkActive="active">
-        <span class="header__link--text">Pracownicy</span>
+        <span class="header__link--text" matTooltip="Pracownicy">Pracownicy</span>
     </button>
     <button class="header__link" [routerLink]="['/zmiany']" routerLinkActive="active">
-        <span class="header__link--text">Zmiany</span>
+        <span class="header__link--text" matTooltip="Zmiany">Zmiany</span>
     </button>
 </div>

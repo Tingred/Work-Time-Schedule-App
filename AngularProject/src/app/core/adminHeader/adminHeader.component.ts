@@ -11,7 +11,8 @@ import * as fromAuthSelectors from 'src/app/store/auth/auth.selectors';
   styleUrls: ['./adminHeader.component.scss']
 })
 export class AdminHeaderComponent implements OnInit {
-
+  
+  
   roles$: Observable<Array<Roles>> = this.store$.pipe(select(fromAuthSelectors.selectUserRoles));
   constructor(
     private store$: Store<AppState>

@@ -14,12 +14,14 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatTreeModule} from '@angular/material/tree';
 import { MatButtonModule } from '@angular/material/button';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { UserViewComponent } from './user-view/user-view.component';
 
 
 @NgModule({
   declarations: [
     ScheduleMainComponent,
-    SingleScheduleComponent
+    SingleScheduleComponent,
+    UserViewComponent
   ],
   imports: [
     CommonModule,

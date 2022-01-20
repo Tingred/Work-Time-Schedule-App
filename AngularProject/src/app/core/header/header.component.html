@@ -1,11 +1,12 @@
 <div class="header">
-    <a [routerLink]="['/zarejestruj']" class="header" *ngIf="(isLoggedIn$ | async) === false">
-        <button type="button" class="headerButton">Zarejestruj się</button>
-    </a>
-    <a [routerLink]="['/zaloguj']" class="header" *ngIf="(isLoggedIn$ | async) === false">
-        <button type="button" class="headerButton">Zaloguj się</button>
-    </a>
-    <a [routerLink]="['/']" *ngIf="(isLoggedIn$ | async) === true">
-        <button type="button" class="headerButton" (click)="logout()">Wyloguj</button>
-    </a>
+    <button class="header__link" [routerLink]="['/zarejestruj']" *ngIf="(isLoggedIn$ | async) === false" >
+        <span class="header__link--text">Zarejestruj się</span>
+    </button>
+    <button class="header__link" [routerLink]="['/zaloguj']" *ngIf="(isLoggedIn$ | async) === false" >
+        <span class="header__link--text">zaloguj się</span>
+    </button>
+    <button class="header__link" [routerLink]="['/zarejestruj']" *ngIf="(isLoggedIn$ | async) === true" 
+    (click)="logout()">
+        <span class="header__link--text">Wyloguj</span>
+    </button>
 </div>

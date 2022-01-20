@@ -1,0 +1,28 @@
+.register {
+    font-size: 14px;
+    margin: auto;
+    text-align: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    -webkit-box-shadow: 1px 18px 27px -10px #333;
+    -moz-box-shadow: 1px 18px 27px -10px #333;
+    box-shadow: 1px 18px 27px -10px #333;
+    background-color: #eee;
+    form {
+        padding-top: 16px;
+        justify-content: center;
+        .form-group {
+            padding-top: 12px;
+            .ng-star-inserted {
+                color: rgb(255, 0, 0);
+                margin-top: 5px;
+            }
+        }
+    }
+    button {
+        line-height: 52px;
+        padding-left: 32px;
+        padding-right: 32px;
+        text-transform: uppercase;
+    }
+}

@@ -1,0 +1,71 @@
+<div class="view">
+  <div class="schedule-info">
+    <h2>
+      Wybierz datę, aby zobaczyć swoją zmianę.
+    </h2>
+  </div>
+  <mat-card class="demo-inline-calendar-card">
+    <mat-calendar (selectedChange)="selectedChange($event)"></mat-calendar>
+  </mat-card>
+  <div *ngIf="(schedule$ | async) as schedule">
+    <div class="schedule">
+      <div class="schedule__info">
+        <mat-icon class="schedule__icon">pending_actions</mat-icon>
+        <div class="schedule__data">
+          <p class="schedule__data--label">
+            <strong>Data:</strong>
+          </p>
+          <p class="schedule__data--value">
+            {{ schedule.date }}
+          </p>
+
+          <p class="schedule__data--label">
+            <strong>Zmiana:</strong>
+          </p>
+          <p class="schedule__data--value">
+            {{ schedule?.shift?.startTime }} - {{ schedule?.shift?.finishTime }}
+          </p>
+          <p class="schedule__data--label">
+            <strong>Miejsce pracy:</strong>
+          </p>
+          <p class="schedule__data--value">
+            {{ schedule.workplaces[0].workplace.name }}
+          </p>
+          <p class="schedule__data--label">
+            <strong>Pracownik:</strong>
+          </p>
+          <p class="schedule__data--value">
+            {{ schedule.workplaces[0].employees[0].name }} {{ schedule.workplaces[0].employees[0].surname }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="(tasks$ | async) as tasks">
+    <div class="task" *ngFor="let task of tasks">
+      <div class="task__info">
+        <mat-icon class="task__icon">assignment</mat-icon>
+        <div class="task__data">
+          <p class="task__data--label">
+            <strong>Data:</strong>
+          </p>
+          <p class="task__data--value">
+            <span [matTooltip]="task.date">{{ task.date }}</span>
+          </p>
+          <p class="task__data--label">
+            <strong>Treść:</strong>
+          </p>
+          <p class="task__data--value">
+            <span [matTooltip]="task.text">{{ task.text }}</span>
+          </p>
+
+        </div>
+      </div>
+      <div>
+        <button class="task__delete" (click)="delete( task.uuid )">
+          Zakończ zadanie
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

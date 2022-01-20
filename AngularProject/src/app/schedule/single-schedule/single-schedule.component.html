@@ -1,8 +1,80 @@
-<span *ngIf="(shift$ | async) as shift">
-    <p>Data: {{ date }}</p>
-    <p>Od: {{shift.startTime}} <br/>
-        Do: {{shift.finishTime}}</p>
-</span>
+<div class="schedule-section-info">
+<ng-container *ngIf="(shift$ | async) as shift">
+<div class="shift">
+    <div class="shift__info">
+    <div class="shift__data">
+        <p class="shift__data--label">
+            <strong>Data:</strong>
+        </p>
+        <p class="shift__data--value">
+            <span [matTooltip]="date">
+                {{ date }}
+            </span>
+        </p>
+    
+        <p class="shift__data--label">
+            <strong>Początek:</strong>
+        </p>
+        <p class="shift__data--value">
+            <span [matTooltip]="shift.startTime">
+                {{ shift.startTime }}
+            </span>
+        </p>
+        <p class="shift__data--label">
+            <strong>Koniec:</strong>
+        </p>
+        <p class="shift__data--value">
+            <span [matTooltip]="shift.finishTime">
+                {{ shift.finishTime }}
+            </span>
+        </p>
+        </div>
+    </div>
+</div>
+</ng-container>
+</div>
+<div class="schedule-section">
+    <div class="schedule-info">
+        <h2>
+          Podgląd aktualnej zmiany
+        </h2>
+      </div>
+    <section class="presentation-section">
+        <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
+            <!-- This is the tree node template for leaf nodes -->
+            <!-- There is inline padding applied to this node using styles.
+              This padding value depends on the mat-icon-button width. -->
+            <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
+                <mat-icon>person</mat-icon>
+                {{node.name}}
+            </mat-tree-node>
+            <!-- This is the tree node template for expandable nodes -->
+            <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
+                <div class="mat-tree-node">
+                  <button mat-icon-button matTreeNodeToggle
+                          [attr.aria-label]="'Toggle ' + node.name">
+                    <mat-icon class="mat-icon-rtl-mirror">
+                      {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
+                    </mat-icon>
+                  </button>
+                  {{node.name}}
+                </div>
+                <!-- There is inline padding applied to this div using styles.
+                    This padding value depends on the mat-icon-button width.  -->
+                <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
+                    role="group">
+                  <ng-container matTreeNodeOutlet></ng-container>
+              </div>
+            </mat-nested-tree-node>
+          </mat-tree>
+    </section>
+    </div>
+<div class="schedule-section">
+    <div class="schedule-info">
+        <h2>
+          Modyfikacja aktualnej zmiany
+        </h2>
+      </div>
 <section class="form-section">
     <span class="example-list-section" *ngIf="(workplaces$ | async) as workplaces">
         <ul *ngFor="let workplace of workplaces; let i = index;">
@@ -13,6 +85,7 @@
                     [color]="color"
                     [disabled]="false"
                     (change)="toggleEmployee(i, employee.uuid, $event)"
+                    [checked]="isChecked(i, employee.uuid)"
                     >
                     {{employee.name}} {{employee.surname}}
                 </mat-checkbox>
@@ -30,33 +103,6 @@
         <button class="schedule__button" (click)="deleteSchedule()">Usuń</button>
     </span>
 </section>
-<section class="presentation-section">
-    <mat-tree [dataSource]="dataSource" [treeControl]="treeControl" class="example-tree">
-        <!-- This is the tree node template for leaf nodes -->
-        <!-- There is inline padding applied to this node using styles.
-          This padding value depends on the mat-icon-button width. -->
-        <mat-tree-node *matTreeNodeDef="let node" matTreeNodeToggle>
-            <mat-icon>person</mat-icon>
-            {{node.name}}
-        </mat-tree-node>
-        <!-- This is the tree node template for expandable nodes -->
-        <mat-nested-tree-node *matTreeNodeDef="let node; when: hasChild">
-            <div class="mat-tree-node">
-              <button mat-icon-button matTreeNodeToggle
-                      [attr.aria-label]="'Toggle ' + node.name">
-                <mat-icon class="mat-icon-rtl-mirror">
-                  {{treeControl.isExpanded(node) ? 'expand_more' : 'chevron_right'}}
-                </mat-icon>
-              </button>
-              {{node.name}}
-            </div>
-            <!-- There is inline padding applied to this div using styles.
-                This padding value depends on the mat-icon-button width.  -->
-            <div [class.example-tree-invisible]="!treeControl.isExpanded(node)"
-                role="group">
-              <ng-container matTreeNodeOutlet></ng-container>
-          </div>
-        </mat-nested-tree-node>
-      </mat-tree>
-</section>
+</div>
+
  

@@ -26,7 +26,7 @@ import { AuthEffects } from './store/auth/auth.effect';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DateAdapter } from '@angular/material/core';
 import { SchedulesEffects } from './store/schedules/schedules.effect';
-import { UserViewComponent } from './user/user-view/user-view.component';
+import { UserViewComponent } from './schedule/user-view/user-view.component';
 import { authInterceptorProviders } from './security/_helpers/auth.interceptor';
 import { MatCardModule } from '@angular/material/card';
 import { MatCalendar, MatDatepickerModule } from '@angular/material/datepicker';
@@ -37,8 +37,6 @@ import { RoleGuardService } from './services/security/role-guard.service';
   declarations: [
     AppComponent,
     ValueArrayPipe,
-    UserViewComponent,
-
   ],
   imports: [
     BrowserModule,

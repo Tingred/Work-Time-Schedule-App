@@ -8,7 +8,7 @@ import { ScheduleMainComponent } from './schedule/schedule-main/schedule-main.co
 import { ShiftsComponent } from './options/shifts/shifts.component';
 import { ShiftUpdateComponent } from './options/shift-update/shift-update.component';
 import { SingleScheduleComponent } from './schedule/single-schedule/single-schedule.component';
-import { UserViewComponent } from './user/user-view/user-view.component';
+import { UserViewComponent } from './schedule/user-view/user-view.component';
 import { RoleGuardService } from './services/security/role-guard.service';
 import { RegisterComponent } from './login/register/register.component';
 import { HomeComponent } from './core/home/home.component';

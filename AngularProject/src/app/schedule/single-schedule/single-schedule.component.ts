@@ -14,7 +14,7 @@ import { Schedule } from 'src/app/interfaces/schedule';
 import { ThemePalette } from '@angular/material/core';
 import { Workplace, WorkplaceNode } from 'src/app/interfaces/workplace';
 import { Employee } from 'src/app/interfaces/employee';
-import { first } from 'rxjs/operators';
+import { filter, first } from 'rxjs/operators';
 import { MatCheckboxChange } from '@angular/material/checkbox';
 import { Shift } from 'src/app/interfaces/shift';
 import { MatTreeNestedDataSource} from '@angular/material/tree';
@@ -38,6 +38,7 @@ export class SingleScheduleComponent implements OnInit, OnDestroy {
   schedule$: Observable<Schedule | null> = this.store$.pipe(select(fromSelectorsSchedule.selectSchedule));
   scheduleExists$: Observable<boolean> = this.store$.pipe(select(fromSelectorsSchedule.selectScheduleExists));
   scheduleWorplaceNodes$: Observable<Array<WorkplaceNode> | undefined> = this.store$.pipe(select(fromSelectorsSchedule.selectScheduleWorplaceNodes));
+  selectScheduleCheckboxInitialData$: Observable<any> = this.store$.pipe(select(fromSelectorsSchedule.selectScheduleCheckboxInitialData));
   workplaces$: Observable<Workplace[]> = this.store$.pipe(select(fromSelectorsFirm.selectWorkplaces));
   employees$: Observable<Employee[]> =  this.store$.pipe(select(fromSelectorsFirm.selectEmployees));
   shift$: Observable<Shift> = this.store$.pipe(select(fromSelectorsOptions.selectShift))
@@ -62,6 +63,7 @@ export class SingleScheduleComponent implements OnInit, OnDestroy {
       this.workplaces$.pipe(
         first(workplaces => workplaces.length > 0),
       ).subscribe(workplaces => {
+        console.log(workplaces);
         workplaces.forEach(w => {
           const group = this.fb.group({
             workplaceUuid: new FormControl(w.uuid),
@@ -69,6 +71,18 @@ export class SingleScheduleComponent implements OnInit, OnDestroy {
           });
           this.form.push(group);
         });
+      });
+
+      this.selectScheduleCheckboxInitialData$.pipe(
+        filter(initialData => initialData && this.form && initialData.length === this.form.length),
+        first()
+      ).subscribe(initialData => {
+        console.log(initialData);
+        this.form.setValue(initialData);
+      })
+
+      this.form.valueChanges.subscribe(res => {
+        console.log(res);
       })
 
       this.scheduleWorplaceNodes$.subscribe(nodes => {
@@ -99,8 +113,13 @@ export class SingleScheduleComponent implements OnInit, OnDestroy {
         )
     }
     console.log(this.form.value);
+
+  }
+  isChecked(index: number, employeeUuid: string){
+    return (this.form.at(index) as FormGroup).controls.employeeUuids.value.includes(employeeUuid);
   }
 
+  
   addSchedule() {
     const scheduleFromForm = {
       date: this.date,
