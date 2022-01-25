@@ -1,10 +1,10 @@
 -- pracownicy
 
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
-VALUES ('ec678d8d-356e-415f-94e1-3d8287a50d19','Marek','Jaworski','57439857623',3000,'MEZCZYZNA','WOZKOWY');
+VALUES ('ec678d8d-356e-415f-94e1-3d8287a50d19','Marek','Jaworski','57439857623',3000,'MEZCZYZNA','OPERATOR_WOZKA_WIDLOWEGO');
 
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
-VALUES ('5eb2fbf3-c30a-4bf0-aaf9-07be817730c2','Adrian','Nieziemski','35239853323',3200,'MEZCZYZNA','WOZKOWY');
+VALUES ('5eb2fbf3-c30a-4bf0-aaf9-07be817730c2','Adrian','Nieziemski','35239853323',3200,'MEZCZYZNA','OPERATOR_WOZKA_WIDLOWEGO');
 
 INSERT INTO employee (uuid,`name`,surname,pesel,salary,gender,position) 
 VALUES ('b2859ca2-a9b3-4e70-aab2-2258032cad97','Dominik','Bernacki','12375839251',4000,'MEZCZYZNA','MENADZER');
@@ -41,6 +41,9 @@ VALUES ('Wymienić baterię w wózku nr 3',1,'2022-01-07','50d628e7-f7e4-4b8f-a1
 -- miejsca pracy
 
 INSERT INTO workplace(uuid,`name`,position)
+VALUES ('1c971b7d-ef11-4379-82bb-45033e6cd4c3','Nadzór hali A','KIEROWNIK_HALI');
+
+INSERT INTO workplace(uuid,`name`,position)
 VALUES ('ecf34377-1872-4406-9f53-408a5d5ed995','Kierowanie - linia 1','KIEROWNIK_LINII');
 
 INSERT INTO workplace(uuid,`name`,position)
@@ -48,6 +51,18 @@ VALUES ('dcf34277-1872-4406-9f53-408a5d5ed995','Wazenie owoców - linia 1','PRAC
 
 INSERT INTO workplace(uuid,`name`,position)
 VALUES ('bcf38377-1872-4406-9f53-408a5d5ed995','Pakowanie - linia 1','PRACOWNIK_LINII');
+
+INSERT INTO workplace(uuid,`name`,position)
+VALUES ('eaa24f3e-5a6b-4930-94d6-a1f26599cf53','Maszyna do kartonów - magazyn','MAGAZYNIER');
+
+INSERT INTO workplace(uuid,`name`,position)
+VALUES ('0a7e96aa-e42e-4725-b805-8a69d6912dfc','Biuro','MENADZER');
+
+INSERT INTO workplace(uuid,`name`,position)
+VALUES ('675f1a9e-0dad-42df-9b61-66ed8881afc0','Wózek widłowy - linia 1','OPERATOR_WOZKA_WIDLOWEGO');
+
+INSERT INTO workplace(uuid,`name`,position)
+VALUES ('af57cd03-24fd-4e66-ae9a-587d9bff63f0','Wózek widłowy - magazyn','OPERATOR_WOZKA_WIDLOWEGO');
 
 -- zmiany
 

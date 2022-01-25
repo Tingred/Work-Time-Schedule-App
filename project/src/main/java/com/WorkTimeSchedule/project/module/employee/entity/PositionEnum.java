@@ -5,7 +5,7 @@ import java.util.Optional;
 
 public enum PositionEnum {
     PRACOWNIK_LINII("Pracownik linii"),
-    WOZKOWY("Wozkowy"),
+    OPERATOR_WOZKA_WIDLOWEGO("Operator wozka widlowego"),
     KIEROWNIK_LINII("Kierownik linii"),
     KIEROWNIK_HALI("Kierownik hali"),
     MAGAZYNIER("Magazynier"),
