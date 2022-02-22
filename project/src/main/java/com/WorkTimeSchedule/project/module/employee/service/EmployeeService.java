@@ -23,9 +23,6 @@ public class EmployeeService {
     @Autowired
     private EmployeeRepository employeeRepository;
 
-    @Autowired
-    private TaskRepository taskRepository;
-
     public EmployeeDto getOneByUuid(String uuid) {
         EmployeeEntity entity = employeeRepository.findOneByUuid(uuid);
         return EmployeeMapper.map(entity);
@@ -34,7 +31,6 @@ public class EmployeeService {
         EmployeeEntity entity = employeeRepository.findOneByUserId(id);
         return EmployeeMapper.map(entity);
     }
-
 
     public List<EmployeeDto> findAll() {
         return EmployeeMapper
